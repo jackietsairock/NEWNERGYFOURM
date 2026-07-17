@@ -51,6 +51,20 @@
         background-size: cover;
     }
 
+    .kv_area::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+        pointer-events: none;
+        width: 100%;
+        height: 35%;
+        background: linear-gradient(to top, rgba(1, 48, 127, 0) 0%, rgb(1, 47, 127) 98%);
+    }
+
     .kv_area::after{
         content: '';
         position: absolute;
@@ -144,6 +158,10 @@
         .kv_area{
             background: url('../assets/image/bg1-phone.jpg') center center no-repeat;
             background-size: cover;
+        }
+
+        .kv_area::before{
+            display: none;
         }
 
         .kv_area::after{
