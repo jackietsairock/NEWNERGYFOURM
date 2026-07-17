@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://events.businesstoday.com.tw/2026/HRforum/sitemap.xml
+Sitemap: https://events.businesstoday.com.tw/2026/NEWNERGYFOURM/sitemap.xml
