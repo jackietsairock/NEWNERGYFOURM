@@ -1,34 +1,44 @@
 export const siteConfig = {
-  siteName: '2026人資長論壇',
-  title: '2026人資長論壇｜AI新世代人才永續新篇章',
+  siteName: '2026今周刊第十屆新能源國際論壇',
+  title: '2026今周刊第十屆新能源國際論壇｜算力爆發大挑戰・台灣能源轉型新思維',
   description:
-    '2026人資長論壇聚焦 AI 助力、財務自立與健康福利，邀請企業領袖與人資決策者在新竹共同探討高齡化、缺工與人才永續的新解方。',
+    '2026今周刊第十屆新能源國際論壇，以「算力爆發大挑戰，台灣能源轉型新思維」為主題，聚焦AI用電、電力韌性、再生能源、核能、儲能、氫能、地熱與能源政策，邀集政府、企業及國際專家共同探討台灣能源轉型與永續發展的新方向。',
   keywords: [
-    '2026人資長論壇',
-    '人資長論壇',
-    'HR論壇',
-    'AI人才永續',
-    '人才永續',
-    '人力資源',
-    'HR',
-    '缺工',
-    '高齡化',
-    '企業健康福利',
-    '財務自立',
+    '新能源論壇',
+    '能源論壇',
+    '國際論壇',
+    '能源轉型',
+    'AI用電',
+    'AI電力',
+    '算力',
+    '電力需求',
+    '台灣能源',
+    '能源政策',
+    '再生能源',
+    '綠能',
+    '核能',
+    '小型模組化反應爐',
+    'SMR',
+    '核融合',
+    '地熱',
+    '氫能',
+    '儲能',
+    '電網韌性',
+    '永續',
     'ESG',
-    '新竹論壇'
+    '淨零排放',
+    'Net Zero',
+    '今周刊'
   ],
   language: 'zh-Hant-TW',
   locale: 'zh_TW',
   canonicalUrl: 'https://events.businesstoday.com.tw/2026/HRforum/',
   themeColor: '#0f7f83',
   ogImageName: 'fb-share.jpg',
-  ogImageAlt: '2026人資長論壇活動主視覺',
+  ogImageAlt: '2026今周刊第十屆新能源國際論壇活動主視覺',
   organizationName: '今周刊 Business Today',
   organizationUrl: 'https://www.businesstoday.com.tw/',
   organizationLogo: 'https://events.businesstoday.com.tw/2026/HRforum/favicon.png',
-  showVisibleFaqSection: false,
-  enableFaqSchema: false,
   sameAs: [
     'https://www.businesstoday.com.tw/',
     'https://esg.businesstoday.com.tw/',
@@ -107,50 +117,6 @@ function getAgendaTopics(infoData) {
     .filter((topic) => topic && topic !== '演講主題')
 }
 
-function buildFaqs({ signUpContent, schedule, trafficVenue, agendaTopics }) {
-  const signUpInfo = Array.isArray(signUpContent?.signUp_info) ? signUpContent.signUp_info : []
-  const audienceText = stripHtml(signUpInfo[0]?.detail)
-  const registrationText = stripHtml(signUpInfo[1]?.detail)
-  const locationName = [trafficVenue.title, trafficVenue.subTitle].filter(Boolean).join(' ')
-  const locationText = stripHtml(trafficVenue.location)
-  const transportSummary = (trafficVenue.description ?? [])
-    .map((item) => {
-      const detail = Array.isArray(item?.info?.detail) ? item.info.detail.join(' ') : item?.info?.detail
-      const text = stripHtml(detail)
-      return item?.label && text ? `${item.label}：${text}` : ''
-    })
-    .filter(Boolean)
-    .join(' ')
-  const agendaSummary = agendaTopics.slice(0, 4).join('、')
-
-  return [
-    {
-      question: '2026 人資長論壇在談什麼？',
-      answer: `本屆論壇聚焦 AI 助力、財務自立與健康福利三大面向，討論企業如何在高齡化與缺工壓力下打造更具韌性的人才競爭力。${agendaSummary ? ` 亮點議題包含 ${agendaSummary}。` : ''}`
-    },
-    {
-      question: '活動時間與地點在哪裡？',
-      answer: `論壇將於 ${schedule.dateText || '2026/4/29'} 舉行，活動時間為 ${schedule.timeText || '09:30 ~ 16:50'}。地點在 ${locationName}${locationText ? `，地址為 ${locationText}。` : '。'}`
-    },
-    {
-      question: '誰適合參加 2026 人資長論壇？',
-      answer: audienceText || '歡迎人力資源管理主管、財務主管、管理部門人員，以及對人才永續、AI 應用與企業健康福利議題有興趣的參與者報名。'
-    },
-    {
-      question: '活動費用與報名方式是什麼？',
-      answer: `本活動免費參加，需事先線上報名並採審核制。${registrationText || '活動人數及座位有限，主辦單位保有最終審核權。'}`
-    },
-    {
-      question: '怎麼知道自己是否報名成功？',
-      answer: '審核通過後，報名者會在報名後 5 個工作天內收到 email 與簡訊通知，活動前 1 至 3 天也會再收到報到序號簡訊。'
-    },
-    {
-      question: '前往會場有哪些交通方式？',
-      answer: transportSummary || '可搭乘高鐵、客運與市區公車前往陽明交通大學光復校區，校內停車區分散，建議提早抵達。'
-    }
-  ]
-}
-
 function normalizeSpeakers(speakers) {
   const speakerList = Array.isArray(speakers?.data) ? speakers.data : Array.isArray(speakers) ? speakers : []
 
@@ -168,14 +134,12 @@ export function createSeoPayload({ infoData, speakers }) {
   const trafficVenue = getTrafficVenue(infoData)
   const agendaTopics = getAgendaTopics(infoData)
   const schedule = parseEventSchedule(signUpContent)
-  const faqs = buildFaqs({ signUpContent, schedule, trafficVenue, agendaTopics })
   const speakerEntities = normalizeSpeakers(speakers)
   const ogImageUrl = new URL(siteConfig.ogImageName, siteConfig.canonicalUrl).toString()
   const organizationId = `${siteConfig.canonicalUrl}#organization`
   const websiteId = `${siteConfig.canonicalUrl}#website`
   const webpageId = `${siteConfig.canonicalUrl}#webpage`
   const eventId = `${siteConfig.canonicalUrl}#event`
-  const faqId = `${siteConfig.canonicalUrl}#faq`
   const locationName = [trafficVenue.title, trafficVenue.subTitle].filter(Boolean).join(' ')
   const locationAddress = stripHtml(trafficVenue.location)
 
@@ -191,7 +155,6 @@ export function createSeoPayload({ infoData, speakers }) {
     language: siteConfig.language,
     themeColor: siteConfig.themeColor,
     author: siteConfig.organizationName,
-    faqs,
     structuredData: [
       {
         '@context': 'https://schema.org',
@@ -274,28 +237,12 @@ export function createSeoPayload({ infoData, speakers }) {
           availability: 'https://schema.org/InStock'
         }
       },
-      siteConfig.enableFaqSchema
-        ? {
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            '@id': faqId,
-            url: `${siteConfig.canonicalUrl}#faq`,
-            mainEntity: faqs.map((item) => ({
-              '@type': 'Question',
-              name: item.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: item.answer
-              }
-            }))
-          }
-        : null,
       speakerEntities.length
         ? {
             '@context': 'https://schema.org',
             '@type': 'ItemList',
             '@id': `${siteConfig.canonicalUrl}#speakers`,
-            name: '2026人資長論壇講者陣容',
+            name: '2026今周刊第十屆新能源國際論壇講者陣容',
             itemListElement: speakerEntities.map((speaker, index) => ({
               '@type': 'ListItem',
               position: index + 1,

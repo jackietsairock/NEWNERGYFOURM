@@ -10,11 +10,10 @@ import Traffic from './components/Traffic.vue'
 import Event from './components/Event.vue'
 import Gototop from './components/Gototop.vue'
 import SignUpFiexd from './components/SignUpFiexd.vue'
-import Faq from './components/Faq.vue'
 
 import infoData from './assets/json/info.json'
 import speakers from './assets/json/speaker.json'
-import { createSeoPayload, siteConfig } from './seo/siteSeo'
+import { createSeoPayload } from './seo/siteSeo'
 import { applySeo } from './seo/applySeo'
 
 const seo = createSeoPayload({ infoData, speakers });
@@ -38,7 +37,7 @@ const showTrafficSection = false
 <template>
   <Header :menu="infoData.menu" />
   <main id="main-content">
-    <section id="kv" class="relative w-full z-20 overflow-hidden" aria-label="2026人資長論壇主視覺">
+    <section id="kv" class="relative w-full z-20 overflow-hidden" aria-label="2026今周刊第十屆新能源國際論壇主視覺">
       <Kv />
     </section>
     <section id="intro" class="relative w-full z-10" aria-label="活動前言">
@@ -57,7 +56,6 @@ const showTrafficSection = false
       <SignUp :infoData="signUpInfo" />
 
     </section>
-    <Faq v-if="siteConfig.showVisibleFaqSection" :faqs="seo.faqs" />
     <section v-if="showTrafficSection" id="traffic" class="relative w-full z-40 overflow-hidden" aria-label="交通資訊">
       <Traffic :infoData="trafficInfo" />
 
