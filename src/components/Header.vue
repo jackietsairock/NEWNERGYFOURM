@@ -61,7 +61,9 @@
     }
 
     const updateHeaderAppearance = () => {
-        isTransparentHeader.value = window.scrollY <= 1350
+        const kvSection = document.querySelector('#kv')
+        isTransparentHeader.value =
+            kvSection instanceof HTMLElement && kvSection.getBoundingClientRect().bottom > 0
     }
 
     let ticking = false
