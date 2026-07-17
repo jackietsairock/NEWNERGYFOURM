@@ -71,7 +71,7 @@ function seoArtifactsPlugin() {
 }
 
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/2026/SDGsforum/" : "/",
+  base: mode === "production" ? "/2026/NEWNERGYFOURM/" : "/",
   plugins: [
     vue(),
     tailwindcss(),

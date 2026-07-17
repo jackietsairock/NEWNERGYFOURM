@@ -112,7 +112,7 @@ SDGsforum/
 `vite.config.js` 內已設定：
 
 - 開發環境 `base: "/"`  
-- 正式環境 `base: "/2026/SDGsforum/"`
+- 正式環境 `base: "/2026/NEWNERGYFOURM/"`
 
 正式部署時請確認站點掛載路徑與 `base` 一致，否則靜態資源路徑會錯誤。
 
