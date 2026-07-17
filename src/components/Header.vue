@@ -330,7 +330,11 @@
         }
 
         header.is-transparent .btnet_logo_box img {
-            filter: brightness(0) invert(1);
+            filter:
+                brightness(0)
+                invert(1)
+                drop-shadow(0 2px 5px rgba(3, 32, 78, 0.95))
+                drop-shadow(0 0 10px rgba(3, 32, 78, 0.65));
         }
 
         header.is-transparent nav a {
