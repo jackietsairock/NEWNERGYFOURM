@@ -1,6 +1,9 @@
-# 永續城市論壇 2026 活動網站
+# 2026 今周刊第十屆新能源國際論壇
 
-以 Vue 3 + Vite 建置的單頁活動官網，包含活動資訊、講者、議程、交通、精彩回顧與報名表單。
+以 Vue 3 與 Vite 建置的單頁活動官網，主題為「算力爆發大挑戰・台灣能源轉型新思維」，包含論壇介紹、講者、議程、報名表單與活動回顧。
+
+- 正式網址：<https://events.businesstoday.com.tw/2026/NEWNERGYFOURM/>
+- 正式部署路徑：`/2026/NEWNERGYFOURM/`
 
 ## 技術棧
 
@@ -8,13 +11,13 @@
 - Vite 6
 - Tailwind CSS 4（透過 `@tailwindcss/vite`）
 - Sass
-- A
+- AOS
 - v-slick-carousel
 
 ## 環境需求
 
-- Node.js 18+（建議使用 LTS）
-- npm 9+
+- Node.js 18 以上（建議使用 LTS）
+- npm 9 以上
 
 ## 開發指令
 
@@ -30,13 +33,13 @@ npm install
 npm run dev
 ```
 
-打包正式版：
+建置正式版：
 
 ```bash
 npm run build
 ```
 
-本機預覽正式版：
+在本機預覽正式版：
 
 ```bash
 npm run preview
@@ -45,78 +48,77 @@ npm run preview
 ## 專案結構
 
 ```text
-SDGsforum/
-├─ .pages.yml                 # Pages CMS no-code 後台設定
+NEWNERGYFOURM/
+├─ public/                    # 不經轉換、直接複製的靜態檔案
 ├─ src/
 │  ├─ assets/
-│  │  ├─ image/              # 網站圖片素材
-│  │  └─ json/               # 頁面內容資料（info / speaker）
-│  ├─ components/            # 各區塊 Vue 元件
-│  ├─ App.vue                # 首頁組裝
-│  ├─ main.js                # 入口
-│  └─ style.css
-├─ public/
+│  │  ├─ image/            # 網站圖片素材
+│  │  ├─ json/             # 頁面與講者內容
+│  │  └─ scss/             # 樣式資源
+│  ├─ components/           # 各頁面區塊的 Vue 元件
+│  ├─ seo/                  # Meta、JSON-LD、sitemap 與 robots 邏輯
+│  ├─ utils/                # 共用工具
+│  ├─ App.vue               # 首頁區塊組裝
+│  ├─ main.js               # Vue 入口
+│  └─ style.css            # 全站樣式
 ├─ index.html
-├─ vite.config.js
+├─ vite.config.js              # Vite、部署路徑與 SEO 產物設定
 └─ package.json
 ```
 
-## 內容維護方式
+## 內容維護
 
-主要內容以 JSON 管理，不需改 Vue 程式即可更新文案與前台 UI 內容：
+主要內容由 JSON 管理：
 
-- `src/assets/json/info.json`
-- `src/assets/json/speaker.json`
+- `src/assets/json/info.json`：選單、前言、議程、報名、交通與 Footer 等內容
+- `src/assets/json/speaker.json`：講者資料
 
-範例檔：
+`info.json` 內的 `cmsType` 會用來對應 `App.vue` 的頁面區塊，調整時請保留現有值。圖片素材放在 `src/assets/image/`。
 
-- `src/assets/json/info_example.json`
-- `src/assets/json/speaker_example.json`
+交通區塊目前由 `src/App.vue` 的 `showTrafficSection` 設為 `false` 而隱藏。
 
-## No-code 後台編輯
+## SEO 設定
 
-本專案已加入 Pages CMS 設定檔：
+SEO 主要設定位於 `src/seo/siteSeo.js`，包含：
 
-- `.pages.yml`
+- Meta title、description 與 keywords
+- Canonical 與 hreflang
+- Open Graph 與 Twitter Card
+- Organization、WebSite、WebPage、Event 與講者 JSON-LD
+- `sitemap.xml` 與 `robots.txt` 內容
 
-後台用途僅限編輯前台 UI 內容，例如 Header 選單、論壇前言、論壇資訊、議程、講者、報名區文字、交通資訊、合作單位與 Footer。報名資料仍由既有報名 API 處理，不會存進 GitHub。
+Vite 會在建置時把 SEO 標籤寫入 `dist/index.html`，並產生 `dist/sitemap.xml` 與 `dist/robots.txt`。前端啟動後也會由 `src/seo/applySeo.js` 套用相同設定。
 
-使用方式：
+分享圖與網站圖示位於：
 
-1. 前往 `https://app.pagescms.org/`
-2. 使用 GitHub 登入
-3. 安裝 Pages CMS GitHub App 到 `jackietsairock/SDGsforum`
-4. 進入 repository 後即可編輯 `網站 UI 內容` 與 `講者內容`
-5. 儲存後 Pages CMS 會把 JSON 變更 commit 回 GitHub，再由原本部署流程重新打包網站
-
-注意：
-
-- 後台圖片會寫入 `src/assets/image/`。
-- 報名表欄位的 `inputName` 會影響送到後端 API 的欄位名稱，未同步調整後端時不要任意修改。
-- `content` 內的 `cmsType` 是後台與前台對應區塊用的固定值，請保留。
+- `public/fb-share.jpg`
+- `public/favicon.png`
 
 ## 報名表單 API
 
-報名送出位於：
+報名送出邏輯位於 `src/components/SignUp.vue` 的 `sign_up()`。
 
-- `src/components/SignUp.vue`
+目前程式使用測試站 API：
 
-目前串接：
+```text
+http://events-kenny.businesstoday.com.tw/backend/SDGsforum2026/sign_up
+```
 
-- `https://events.businesstoday.com.tw/backend/HRforum2026/sign_up`
+正式上線前請向後端確認新能源論壇專用的 HTTPS API 網址並更新 `url`，否則 HTTPS 頁面可能因 Mixed Content 而阻擋 HTTP 請求。
 
-如需切換環境，請更新 `SignUp.vue` 內 `sign_up()` 的 `url`。
+報名欄位的 `inputName` 會對應後端接收欄位，未同步調整後端時請勿任意修改。
 
-## 部署注意事項
+## 部署
 
-`vite.config.js` 內已設定：
+`vite.config.js` 依模式使用不同 base path：
 
-- 開發環境 `base: "/"`  
-- 正式環境 `base: "/2026/NEWNERGYFOURM/"`
+- 開發環境：`/`
+- 正式環境：`/2026/NEWNERGYFOURM/`
 
-正式部署時請確認站點掛載路徑與 `base` 一致，否則靜態資源路徑會錯誤。
+正式部署時，伺服器掛載路徑必須與 base path 一致，否則 JavaScript、CSS 與圖片路徑會失效。
 
 ## 其他備註
 
-- 專案目前無測試框架（Jest / Vitest）與 lint 流程。
-- `dist/` 為打包輸出資料夾。
+- 專案目前沒有測試框架與 lint 流程。
+- `dist/` 是正式建置產物，已列入 `.gitignore`。
+- 修改 SEO、頁面內容或圖片後，建議在上線前重新執行 `npm run build`。
