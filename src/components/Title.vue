@@ -7,20 +7,18 @@
         }
     );
 
-    const headingTag = computed(() => infoData?.tag === 'intro' ? 'h1' : 'h2')
+    const headingTag = computed(() => infoData?.tag === 'intro' ? 'h1' : 'h2');
 </script>
 
 <template>
     <div :class="['title_area w-full text-left',infoData.tag==='intro' ? 'pb-3 sm:pb-[15px]' : 'pb-0 sm:pb-[0px]']">
-        <div :class="['title_box w-fit', (infoData.cmsType==='agenda' || infoData.cmsType==='signUp') ? 'white-title' : '']">
+        <div :class="['title_box w-fit', (infoData.cmsType==='agenda' || infoData.cmsType==='signUp') ? 'white-title' : '', (infoData.cmsType==='agenda' ? 'mx-auto' : 'ml-0')]">
             <component :is="headingTag" class="title" v-html="infoData.title"></component>
         </div>
     </div>
 </template>
 
 <style scoped>
-   .title_box{
-   }
 
    .title {
         color: #0c3e76;

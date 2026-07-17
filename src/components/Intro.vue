@@ -111,5 +111,9 @@
             line-height: 1.8;
             letter-spacing: 0.03em;
         }
+
+        .intro_text::before {
+            display: none;
+        }
     }
 </style>
