@@ -13,6 +13,7 @@
     // 定義一個狀態來控制選單的開啟或關閉
     const isMenuOpen = ref(false)
     const activeTagUrl = ref('')
+    const isTransparentHeader = ref(true)
     const menuItems = computed(() => {
         const menu = props.menu ?? []
         return menu.filter((item) => item.tagUrl !== '#traffic' && item.tagName !== '交通資訊')
@@ -59,6 +60,10 @@
         activeTagUrl.value = currentTagUrl
     }
 
+    const updateHeaderAppearance = () => {
+        isTransparentHeader.value = window.scrollY <= 1350
+    }
+
     let ticking = false
 
     const handleScroll = () => {
@@ -68,6 +73,7 @@
 
         ticking = true
         window.requestAnimationFrame(() => {
+            updateHeaderAppearance()
             updateActiveTag()
             ticking = false
         })
@@ -99,6 +105,7 @@
 
     onMounted(() => {
         activeTagUrl.value = window.location.hash || getHashMenuItems()[0]?.tagUrl || ''
+        updateHeaderAppearance()
         updateActiveTag()
         window.addEventListener('scroll', handleScroll, { passive: true })
         window.addEventListener('resize', handleScroll)
@@ -111,7 +118,7 @@
 </script>
 
 <template>
-    <header>
+    <header :class="{ 'is-transparent': isTransparentHeader }">
         <a href="https://www.businesstoday.com.tw/" class="btnet_logo_box btnet_logo_box1" aria-label="前往今周刊官網">
             <img src="../assets/image/30th_logo.png" class="btnet_logo1" alt="今周刊 30 週年 logo">
         </a>
@@ -148,8 +155,9 @@
         top: 2%;
         width: 96%;
         left: 2%;
-        z-index: 99;
+       z-index: 99;
        border-radius: 12px;
+       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     /* Logo 樣式 */
@@ -190,6 +198,7 @@
     .btnet_logo_box img {
         max-width: 100%;
         max-height: 100%;
+        transition: filter 0.3s ease;
     }
 
     /* 漢堡選單圖示樣式 */
@@ -258,6 +267,7 @@
         margin: auto 0;
         height: 100%;
         width: fit-content;
+        transition: background-color 0.3s ease;
     }
 
     nav.open {
@@ -277,7 +287,7 @@
         line-height: 1;
         letter-spacing: 0;
         isolation: isolate;
-        transition: color 0.2s ease;
+        transition: color 0.3s ease, border-color 0.3s ease;
         border-left: 1px solid #0c3e76;
 
     }
@@ -305,6 +315,26 @@
 
     nav a.active::before {
 
+    }
+
+    @media screen and (min-width: 1351px) {
+        header.is-transparent {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        header.is-transparent nav {
+            background-color: transparent;
+        }
+
+        header.is-transparent .btnet_logo_box img {
+            filter: brightness(0) invert(1);
+        }
+
+        header.is-transparent nav a {
+            color: #fff;
+            border-color: #fff;
+        }
     }
 
     @media screen and (max-width: 1920px) {
