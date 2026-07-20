@@ -26,6 +26,12 @@
     },
     {
       "tag": false,
+      "tagName": "產業動態",
+      "tagUrl": "#industryNews",
+      "tagClassName": "industryNews"
+    },
+    {
+      "tag": false,
       "tagName": "交通資訊",
       "tagUrl": "#traffic",
       "tagClassName": "traffic"
@@ -393,6 +399,39 @@
           }
         ]
       }
+    },
+    {
+      "cmsType": "industryNews",
+      "title": "產業動態",
+      "titleColor": "#0c3e76",
+      "titleEn": "news",
+      "titleEnColor": "#20776e",
+      "items": [
+        {
+          "category": "能源趨勢",
+          "title": "算力時代的電力挑戰，台灣能源轉型迎來新思維",
+          "summary": "AI與高效能運算快速成長，供電穩定、能源安全與產業韌性成為企業的關鍵議題。",
+          "img": "big-main.jpg",
+          "href": "",
+          "target": "_blank"
+        },
+        {
+          "category": "淨零轉型",
+          "title": "多元能源佈局加速，再生能源與儲能共同發展",
+          "summary": "從光電、風電到地熱與氫能，建立穩定、安全與高效的能源系統已成為全球共同目標。",
+          "img": "kv.jpg",
+          "href": "",
+          "target": "_blank"
+        },
+        {
+          "category": "產業觀察",
+          "title": "企業能源策略升級，穩定供電成為國際競爭力關鍵",
+          "summary": "供應鏈重組與電力需求攀升，促使企業從減碳目標進一步思考長期能源配置。",
+          "img": "bg1-phone.jpg",
+          "href": "",
+          "target": "_blank"
+        }
+      ]
     },
     {
       "cmsType": "event",

@@ -6,6 +6,7 @@ import Intro from './components/Intro.vue'
 import Speaker from './components/Speaker.vue'
 import Agenda from './components/Agenda.vue'
 import SignUp from './components/SignUp.vue'
+import IndustryNews from './components/IndustryNews.vue'
 import Traffic from './components/Traffic.vue'
 import Event from './components/Event.vue'
 import Gototop from './components/Gototop.vue'
@@ -29,7 +30,8 @@ const agendaInfo = getContentByType('agenda', 1);
 const speakerInfo = getContentByType('speaker', 2);
 const signUpInfo = getContentByType('signUp', 3);
 const trafficInfo = getContentByType('traffic', 4);
-const eventInfo = getContentByType('event', 5);
+const industryNewsInfo = getContentByType('industryNews', 5);
+const eventInfo = getContentByType('event', 6);
 const showTrafficSection = false; 
 
 </script>
@@ -55,6 +57,9 @@ const showTrafficSection = false;
     <section id="signUp" class="relative w-full z-20 overflow-hidden" aria-label="立即報名">
       <SignUp :infoData="signUpInfo" />
 
+    </section>
+    <section id="industryNews" class="relative w-full z-20" aria-label="產業動態">
+      <IndustryNews :infoData="industryNewsInfo" />
     </section>
     <section v-if="showTrafficSection" id="traffic" class="relative w-full z-40 overflow-hidden" aria-label="交通資訊">
       <Traffic :infoData="trafficInfo" />
@@ -118,12 +123,27 @@ const showTrafficSection = false;
   box-shadow: 0 24px 80px rgba(8, 35, 75, 0.08);
 }
 
+#industryNews{
+  background: url('./assets/image/bg3.jpg') fixed center center no-repeat;
+  background-size: cover;
+}
+
 #gift{
   background-color: #f1f1ef;
 }
 
 #traffic{
   background: linear-gradient(to top, #2894e5 0%, #2894e5 100%);
+}
+
+#event{
+  background: url('./assets/image/bg3.jpg') fixed center center no-repeat;
+  background-size: cover;
+}
+
+footer{
+  background: url('./assets/image/bg3.jpg') fixed center center no-repeat;
+  background-size: cover;
 }
 
 
