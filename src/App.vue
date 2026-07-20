@@ -24,13 +24,13 @@ const getContentByType = (cmsType, fallbackIndex) => {
   return sections.find((item) => item.cmsType === cmsType) ?? sections[fallbackIndex] ?? {}
 }
 
-const introInfo = getContentByType('intro', 0)
-const agendaInfo = getContentByType('agenda', 1)
-const speakerInfo = getContentByType('speaker', 2)
-const signUpInfo = getContentByType('signUp', 3)
-const trafficInfo = getContentByType('traffic', 4)
-const eventInfo = getContentByType('event', 5)
-const showTrafficSection = false
+const introInfo = getContentByType('intro', 0);
+const agendaInfo = getContentByType('agenda', 1);
+const speakerInfo = getContentByType('speaker', 2);
+const signUpInfo = getContentByType('signUp', 3);
+const trafficInfo = getContentByType('traffic', 4);
+const eventInfo = getContentByType('event', 5);
+const showTrafficSection = false; 
 
 </script>
 
@@ -107,13 +107,13 @@ const showTrafficSection = false
 
 
 #agenda{
-  background: url('./assets/image/bg2.jpg') center center no-repeat;
+  background: url('./assets/image/bg2.jpg') fixed center center no-repeat;
   background-size: cover;
   box-shadow: 0 24px 80px rgba(8, 35, 75, 0.08);
 }
 
 #signUp{
-  background: url('./assets/image/bg2.jpg') center center no-repeat;
+  background: url('./assets/image/bg2.jpg') fixed center center no-repeat;
   background-size: cover;
   box-shadow: 0 24px 80px rgba(8, 35, 75, 0.08);
 }
