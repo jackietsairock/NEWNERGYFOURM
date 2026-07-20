@@ -47,7 +47,7 @@
     {
       "cmsType": "agenda",
       "id": 1,
-      "title": "論壇資訊",
+      "title": "議程",
       "titleColor": "#000",
       "titleEn": "亮點議題",
       "titleEnColor": "#20776e",
@@ -103,6 +103,7 @@
         },
         {
           "time": "19:20-19:40",
+          "section": "專題演講",
           "topic": "【專題演講一】<br>川普經濟新局與2026總體趨勢",
           "speaker": [
             {
@@ -123,6 +124,7 @@
         },
         {
           "time": "20:00-20:40",
+          "section": "焦點對談",
           "topic": "【富足今周起Live】<br>投資AI時代的全球關鍵布局",
           "speaker": [
             {

@@ -1,89 +1,340 @@
 <script setup>
   import Title from './Title.vue'
+  import agendaSideTitle from '../assets/image/T-3.png'
 
   defineProps({
-    infoData: Object
-  });
-
+    infoData: {
+      type: Object,
+      default: () => ({})
+    }
+  })
 </script>
 
 <template>
-    <div :class="['content_wrap',infoData.id===1 ? 'agenda1' : 'agenda2']">
-        <Title :infoData="infoData" />
-        <div class="agenda_box max-w-[1366px] pl-10 pr-10 pb-10 mx-auto">
-            <!--<p class="text-center text-white font-bold text-5xl sm:text-9xl" style="letter-spacing: 3px;">AGENDA</p>-->
-            <div class="event_info_box flex flex-col gap-4 my-10 w-fit mx-auto">
-                <div v-for="(item, idx) in infoData.event_info" :key="idx" class="event_info_item flex flex-col items-start gap-4 sm:items-center sm:flex-row sm:gap-8">
-                    <div class="event_info_label">
-                        <div class="label_box bg-[#050505] w-fit px-5 py-2">
-                            <p class="text-lg text-[#fff] font-bold sm:text-2xl">{{ item.label }}</p>
-                        </div>
-                    </div>
-                    <div class="event_info_value flex flex-col gap-3 text-left mb-5 items-baseline sm:mb-0 sm:flex-row sm:gap-8">
-                        <p class="text-2xl text-[#fff] font-bold sm:text-4xl" v-html="item.title"></p>
-                        <p class="text-sm text-[#2e362b] sm:text-base">{{item.detail}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="agenda_table flex flex-col bg-white p-3 rounded-lg">
-                <div v-for="(item ,idx) in infoData.agendaInfo" :key="idx" class="agenda_table_item flex flex-col lg:flex-row">
-                    <div class="time_box w-full lg:w-[14%]">
-                        <p class="text-md lg:text-xl" :style="{color: idx === 0 ? '#474747' : '#474747'}">{{item.time}}</p>
-                    </div>
-                    <div class="title_box w-full lg:w-[55%]">
-                        <p class="text-md font-bold lg:text-xl" :style="{color: idx === 0 ? '#474747' : '#474747'}" v-html="item.topic"></p>
-                    </div>
-                    <div class="speaker_area flex flex-col w-full gap-3 lg:w-[45%]">
-                        <div v-for="(item ,idx) in item.speaker" :key="idx" class="speaker_box flex flex-row text-md w-full items-center lg:text-xl">
-                            <p v-html="item.speakerTitle" class="" style="color: #474747"></p>
-                            <p :class="item.speakerName !== '' ? `block bg-[#00c19f] text-white whitespace-nowrap font-bold ml-1 py-1 px-2` : `hidden`" :style="{color: item.speakerName !== '講者' ? '#fff' : '#fff'}"> {{item.speakerName}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p class="agenda_note text-center text-sm text-[#2e362b] mt-4">{{ infoData.note }}</p>
+  <div class="content_wrap agenda_wrap">
+    <img class="agenda_vertical" :src="agendaSideTitle" alt="" aria-hidden="true" />
+
+    <Title :infoData="infoData" />
+
+    <div class="agenda_box">
+      <div v-if="infoData.event_info?.length" class="event_info_box">
+        <div
+          v-for="(item, idx) in infoData.event_info"
+          :key="`${item.label}-${idx}`"
+          class="event_info_item"
+        >
+          <p class="event_info_title" v-html="item.title"></p>
+          <p v-if="item.detail" class="event_info_detail" v-html="item.detail"></p>
         </div>
+      </div>
+
+      <p v-if="infoData.note" class="agenda_note">{{ infoData.note }}</p>
+
+      <div class="agenda_table" role="table" aria-label="論壇議程">
+        <div class="agenda_table_head" role="row">
+          <div role="columnheader">時間</div>
+          <div role="columnheader">議程</div>
+        </div>
+
+        <template v-for="(item, idx) in infoData.agendaInfo" :key="`${item.time}-${idx}`">
+          <div v-if="item.section" class="agenda_section" role="row">
+            <div role="cell">{{ item.section }}</div>
+          </div>
+
+          <div class="agenda_table_item" role="row">
+            <div class="time_box" role="cell">{{ item.time }}</div>
+
+            <div class="agenda_content" role="cell">
+              <div class="topic_box" v-html="item.topic"></div>
+
+              <div
+                v-if="item.speaker?.some((speaker) => speaker?.speakerTitle || speaker?.speakerName)"
+                class="speaker_area"
+              >
+                <div
+                  v-for="(speaker, speakerIdx) in item.speaker"
+                  :key="speakerIdx"
+                  v-show="speaker?.speakerTitle || speaker?.speakerName"
+                  class="speaker_box"
+                >
+                  <span v-if="speaker.speakerTitle" class="speaker_title" v-html="speaker.speakerTitle"></span>
+                  <strong v-if="speaker.speakerName" class="speaker_name">{{ speaker.speakerName }}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
     </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
-    .title_box p :deep(br){
-        margin-bottom: 1rem;
+  .agenda_wrap{
+    max-width: 1366px;
+    padding: 82px 110px 100px 190px;
+  }
+
+  .agenda_vertical{
+    position: absolute;
+    top: 245px;
+    left: 54px;
+    width: 105px;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .agenda_box{
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .event_info_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin: 28px auto 4px;
+    text-align: center;
+  }
+
+  .event_info_item{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 9px;
+  }
+
+  .event_info_title,
+  .event_info_detail{
+    margin: 0;
+    color: #fff100;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .event_info_title{
+    font-size: clamp(20px, 2.2vw, 30px);
+    letter-spacing: 0.03em;
+  }
+
+  .event_info_detail{
+    font-size: clamp(14px, 1.4vw, 18px);
+  }
+
+  .agenda_note{
+    margin: 5px 0 24px;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  .agenda_note::before{
+    content: '(';
+  }
+
+  .agenda_note::after{
+    content: ')';
+  }
+
+  .agenda_table{
+    overflow: hidden;
+    padding: 20px 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.99);
+    box-shadow: 0 15px 34px rgba(0, 28, 74, 0.25);
+  }
+
+  .agenda_table_head,
+  .agenda_table_item{
+    display: grid;
+    grid-template-columns: 22% 78%;
+  }
+
+  .agenda_table_head{
+    min-height: 44px;
+    align-items: center;
+    border-bottom: 1px solid #bcc8d2;
+    color: #193c5f;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .agenda_table_head > div,
+  .agenda_table_item > div{
+    padding: 11px 18px;
+  }
+
+  .agenda_table_head > div:first-child,
+  .agenda_table_item > div:first-child{
+    border-right: 1px solid #e1e6ea;
+    text-align: center;
+  }
+
+  .agenda_table_item{
+    min-height: 66px;
+    border-bottom: 1px solid #d8dee4;
+    color: #404a53;
+  }
+
+  .agenda_table_item:last-child{
+    border-bottom: 0;
+  }
+
+  .time_box{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    color: #566572;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  .agenda_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .topic_box{
+    color: #263c50;
+    font-size: 15px;
+    font-weight: 750;
+    line-height: 1.55;
+  }
+
+  .topic_box :deep(br){
+    display: block;
+    content: '';
+    margin-top: 3px;
+  }
+
+  .speaker_area{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .speaker_box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .speaker_title{
+    color: #59656f;
+  }
+
+  .speaker_name{
+    color: #00aeca;
+    font-weight: 800;
+  }
+
+  .agenda_section{
+    margin-top: 14px;
+    background: linear-gradient(90deg, #22d9c5 0%, #12b8cf 45%, #075ac9 100%);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-align: center;
+  }
+
+  .agenda_section > div{
+    padding: 8px 16px;
+  }
+
+  @media screen and (max-width: 1024px){
+    .agenda_wrap{
+      padding: 72px 38px 80px;
+    }
+
+    .agenda_vertical{
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 720px){
+    .agenda_wrap{
+      padding: 54px 20px 64px;
+    }
+
+    .agenda_wrap :deep(.title){
+      padding: 0 0.38em;
+      font-size: 34px;
+      letter-spacing: 3px;
+    }
+
+    .event_info_box{
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .event_info_item{
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+    }
+
+    .agenda_note{
+      margin-bottom: 18px;
+      font-size: 12px;
     }
 
     .agenda_table{
-        border: 2px solid #fff;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }    
+      padding: 12px 12px 16px;
+    }
+
+    .agenda_table_head,
+    .agenda_table_item{
+      grid-template-columns: 92px 1fr;
+    }
+
+    .agenda_table_head > div,
+    .agenda_table_item > div{
+      padding: 10px 11px;
+    }
+
+    .time_box{
+      justify-content: flex-start;
+      font-size: 12px;
+      text-align: left !important;
+    }
+
+    .topic_box{
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 420px){
+    .agenda_table_head{
+      display: none;
+    }
 
     .agenda_table_item{
-        border-bottom: 1px solid #a9a9a9;
+      grid-template-columns: 1fr;
+      padding: 9px 0;
     }
 
-    .agenda_table_item > div{
-        padding: 1.5rem 1.5rem;
+    .agenda_table_item > div:first-child{
+      justify-content: flex-start;
+      border-right: 0;
+      color: #0874ad;
+      font-weight: 800;
     }
 
-    .agenda_table_item:last-child{
-        border-bottom: 0px solid #a9a9a9;
+    .agenda_content{
+      padding-top: 2px !important;
     }
-
-    .agenda_note::before{
-        content: '*';
-        color: #b91c1c;
-        font-weight: 700;
-        margin-right: 0.25rem;
-    }
-
-
-    @media screen and (max-width: 1024px) {
-         .agenda_table_item > div{
-            padding: 0.5rem 1.5rem;
-            border-right: 0px solid #fff;
-        }
-        .agenda_table_item{
-            padding: 0.5rem 0;
-        }
-        
-    }
+  }
 </style>
