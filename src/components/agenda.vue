@@ -7,7 +7,7 @@
       type: Object,
       default: () => ({})
     }
-  })
+  });
 </script>
 
 <template>
@@ -116,18 +116,18 @@
   }
 
   .event_info_title{
-    font-size: clamp(20px, 2.2vw, 30px);
+    font-size: clamp(24px, 2.4vw, 34px);
     letter-spacing: 0.03em;
   }
 
   .event_info_detail{
-    font-size: clamp(14px, 1.4vw, 18px);
+    font-size: clamp(16px, 1.55vw, 21px);
   }
 
   .agenda_note{
     margin: 5px 0 24px;
     color: rgba(255, 255, 255, 0.94);
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.03em;
     text-align: center;
   }
@@ -160,14 +160,14 @@
     align-items: center;
     border-bottom: 1px solid #bcc8d2;
     color: #193c5f;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 800;
     letter-spacing: 0.12em;
   }
 
   .agenda_table_head > div,
   .agenda_table_item > div{
-    padding: 11px 18px;
+    padding: 14px 20px;
   }
 
   .agenda_table_head > div:first-child,
@@ -177,7 +177,7 @@
   }
 
   .agenda_table_item{
-    min-height: 66px;
+    min-height: 76px;
     border-bottom: 1px solid #d8dee4;
     color: #404a53;
   }
@@ -191,7 +191,7 @@
     align-items: flex-start;
     justify-content: center;
     color: #566572;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 500;
     line-height: 1.55;
   }
@@ -205,7 +205,7 @@
 
   .topic_box{
     color: #263c50;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 750;
     line-height: 1.55;
   }
@@ -227,7 +227,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 5px;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.5;
   }
 
@@ -244,7 +244,7 @@
     margin-top: 14px;
     background: linear-gradient(90deg, #22d9c5 0%, #12b8cf 45%, #075ac9 100%);
     color: #fff;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 800;
     letter-spacing: 0.16em;
     text-align: center;
@@ -288,7 +288,7 @@
 
     .agenda_note{
       margin-bottom: 18px;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     .agenda_table{
@@ -307,12 +307,20 @@
 
     .time_box{
       justify-content: flex-start;
-      font-size: 12px;
+      font-size: 14px;
       text-align: left !important;
     }
 
     .topic_box{
+      font-size: 16px;
+    }
+
+    .speaker_box{
       font-size: 14px;
+    }
+
+    .agenda_section{
+      font-size: 16px;
     }
   }
 
