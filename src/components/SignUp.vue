@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 
 import Title from './Title.vue'
+import signUpSideTitle from '../assets/image/T-4.png'
 
 const props = defineProps({
     infoData: Object
@@ -232,11 +233,12 @@ function isOtherSelected(key) {
 </script>
 
 <template>
-    <div class="content_wrap">
+    <div class="content_wrap signup_wrap">
+        <img class="signup_vertical" :src="signUpSideTitle" alt="" aria-hidden="true" />
         <Title :infoData="props.infoData" />
-        <div class="signUp_box max-w-[1366px] pl-10 pr-10 pb-10 mx-auto">
+        <div class="signUp_box">
             <!--<p class="text-center text-white font-bold text-5xl sm:text-9xl" style="letter-spacing: 3px;">SIGN UP</p>-->
-            <form class="flex flex-col gap-6 w-full bg-white rounded-4xl p-10" @submit.prevent="checkVal">
+            <form class="signup_form" @submit.prevent="checkVal">
                 <!-- <div class="sign_up_info_box flex flex-col gap-8 my-10 mx-auto text-center text-[#4e4e5a]">
                     <div v-for="(item, idx) in props.infoData.signUp_info" :key="idx" class="sign_up_info_item flex flex-col items-center gap-4 text-justify sm:text-center">
                         <div class="label_box bg-[#f5c82d] w-fit px-6 py-2 rounded-4xl">
@@ -246,8 +248,8 @@ function isOtherSelected(key) {
                     </div>
                     <div class="border-t border-dashed border-gray-300 pt-2"></div>
                 </div> -->
-                <div v-for="(item, idx) in visibleLabels" :key="idx" class="flex flex-col w-full sm:flex-row items-center gap-2">
-                    <label class="w-full text-lg font-bold shrink-0 sm:w-24" style="color:#2f3158;"><span v-if="isRequiredField(item)" class="text-red-700">*</span>{{ item.tagName }}</label>
+                <div v-for="(item, idx) in visibleLabels" :key="idx" class="form_row">
+                    <label class="form_label"><span v-if="isRequiredField(item)" class="required_mark">*</span>{{ item.tagName }}</label>
 
                     <input
                         v-if="item.type !== 'select' && item.type !== 'checkbox'"
@@ -256,53 +258,53 @@ function isOtherSelected(key) {
                         :type="getInputType(item)"
                         :min="item.type === 'number' ? 0 : undefined"
                         :maxlength="getMaxLength(item)"
-                        class="w-full flex-1 p-2 bg-white text-black border border-gray-300 rounded-lg focus:outline-none"
+                        class="form_control"
                     />
-                    <div v-else-if="item.type === 'checkbox'" class="w-full flex-1 flex flex-wrap gap-4">
-                        <label v-for="(opt, oidx) in item.label" :key="oidx" class="flex items-center gap-2 text-sm sm:text-base">
+                    <div v-else-if="item.type === 'checkbox'" class="option_list">
+                        <label v-for="(opt, oidx) in item.label" :key="oidx" class="option_item">
                             <input
                                 v-model="form[item.inputName]"
                                 type="checkbox"
                                 :name="item.inputName"
                                 :value="opt.labelName === '其他' ? OTHER_SENTINEL : opt.value"
-                                class="h-4 w-4"
+                                class="option_checkbox"
                             />
-                            <span class="text-black">{{ opt.labelName }}</span>
+                            <span>{{ opt.labelName }}</span>
                             <input
                                 v-if="opt.labelName === '其他'"
                                 v-model="otherInputs[item.inputName]"
                                 type="text"
                                 :disabled="!isOtherSelected(item.inputName)"
-                                class="ml-1 text-black w-40 border-b border-gray-400 bg-transparent text-sm focus:outline-none"
+                                class="form_other_input"
                                 :placeholder="`請輸入${item.tagName}`"
                             />
                         </label>
                     </div>
-                    <div v-else class="w-full flex-1 flex flex-col gap-2">
-                        <select v-model="form[item.inputName]" :name="item.inputName" class="w-full p-2 bg-white text-black border border-gray-300 rounded-lg focus:outline-none">
+                    <div v-else class="select_group">
+                        <select v-model="form[item.inputName]" :name="item.inputName" class="form_control">
                             <option v-for="(opt, idx) in item.option" :key="idx" :value="opt.value">{{ opt.optionName }}</option>
                         </select>
                         <input
                             v-if="isOtherSelected(item.inputName)"
                             v-model="otherInputs[item.inputName]"
                             type="text"
-                            class="w-full p-2 bg-white text-black border border-gray-300 rounded-lg focus:outline-none"
+                            class="form_control"
                             :placeholder="`請輸入${item.tagName}`"
                         />
                     </div>
                 </div>
-                <div v-if="showPersonalInfo && (personalInfo.title || personalInfo.detail)" id="agree-terms" ref="termsAnchor" class="flex flex-col gap-2 mt-2 p-5" style="background-color: #e6e6e6; color:#464646;">
-                    <p v-if="personalInfo.title" class="text-base font-bold">{{ personalInfo.title }}</p>
-                    <p v-if="personalInfo.detail" class="text-sm leading-snug text-justify" v-html="personalInfo.detail"></p>
+                <div v-if="showPersonalInfo && (personalInfo.title || personalInfo.detail)" id="agree-terms" ref="termsAnchor" class="privacy_box">
+                    <p v-if="personalInfo.title" class="privacy_title">{{ personalInfo.title }}</p>
+                    <p v-if="personalInfo.detail" class="privacy_detail" v-html="personalInfo.detail"></p>
                 </div>
-                <div v-if="showPersonalInfo" class="agree_box mx-auto">
-                    <input v-model="form[agreeInputName]" type="checkbox" id="agree" :name="agreeInputName" class="" />
-                    <label for="agree" class="text-lg ml-1" style="color:#464646;">
-                        我已閱讀<a href="#agree-terms" class="personal_information_terms_text text-red-700" @click.stop.prevent="scrollToTerms">個資條款</a>且同意送出資料
+                <div v-if="showPersonalInfo" class="agree_box">
+                    <input v-model="form[agreeInputName]" type="checkbox" id="agree" :name="agreeInputName" />
+                    <label for="agree">
+                        我已閱讀<a href="#agree-terms" class="personal_information_terms_text" @click.stop.prevent="scrollToTerms">個資條款</a>且同意送出資料
                     </label>
                 </div>
-                <button type="submit" class="w-fit mx-auto mt-4 hover:cursor-pointer">
-                    <img class="h-[55px]" src="../assets/image/signup2.png" alt="立即報名圖示">
+                <button type="submit" class="submit_button">
+                    <img src="../assets/image/signup2.png" alt="送出報名">
                 </button>
                 <!-- <div class="sign_up_info_box w-full flex flex-col gap-8 my-10 mx-auto text-justify text-[#4e4e5a] sm:text-center">
                     <div class="border-t border-dashed border-gray-300 pt-2 pb-2"></div>
@@ -317,8 +319,255 @@ function isOtherSelected(key) {
 
 </template>
 
-<style scoped>
-    form{
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+<style scoped lang="scss">
+    .signup_wrap{
+        max-width: 1366px;
+        padding: 82px 110px 100px 190px;
+    }
+
+    .signup_vertical{
+        position: absolute;
+        top: 230px;
+        left: 54px;
+        width: 105px;
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .signUp_box{
+        width: 100%;
+        margin: 32px auto 0;
+    }
+
+    .signup_form{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 18px;
+        padding: 38px 42px 34px;
+        border: 1px solid rgba(255, 255, 255, 0.92);
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.99);
+        box-shadow: 0 15px 34px rgba(0, 28, 74, 0.25);
+    }
+
+    .form_row{
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr);
+        align-items: start;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .form_label{
+        padding-top: 10px;
+        color: #263c50;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
+    .required_mark{
+        margin-right: 3px;
+        color: #c32929;
+    }
+
+    .form_control{
+        width: 100%;
+        min-height: 44px;
+        padding: 9px 12px;
+        border: 1px solid #cfd6dc;
+        border-radius: 2px;
+        outline: none;
+        background: #fff;
+        color: #252d34;
+        font-size: 15px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form_control:focus{
+        border-color: #0a8fc2;
+        box-shadow: 0 0 0 3px rgba(10, 143, 194, 0.13);
+    }
+
+    .select_group{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .option_list{
+        display: flex;
+        min-height: 44px;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 20px;
+        padding: 7px 0;
+        color: #333f49;
+    }
+
+    .option_item{
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .option_checkbox,
+    .agree_box input{
+        width: 17px;
+        height: 17px;
+        flex: 0 0 auto;
+        accent-color: #078fbd;
+    }
+
+    .form_other_input{
+        width: 160px;
+        padding: 4px 3px;
+        border: 0;
+        border-bottom: 1px solid #9eabb5;
+        outline: none;
+        background: transparent;
+        color: #252d34;
+        font-size: 14px;
+    }
+
+    .form_other_input:disabled{
+        opacity: 0.45;
+    }
+
+    .privacy_box{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 4px;
+        padding: 20px 22px;
+        background: #ededed;
+        color: #464646;
+    }
+
+    .privacy_title{
+        margin: 0;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .privacy_detail{
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.55;
+        text-align: justify;
+    }
+
+    .agree_box{
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 7px;
+        margin: 0 auto;
+        color: #464646;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .agree_box input{
+        margin-top: 3px;
+    }
+
+    .personal_information_terms_text{
+        margin: 0 2px;
+        color: #c32929;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .submit_button{
+        display: inline-flex;
+        width: fit-content;
+        margin: 4px auto 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .submit_button:hover{
+        transform: translateY(-2px);
+        filter: brightness(1.06);
+    }
+
+    .submit_button:focus-visible{
+        outline: 3px solid rgba(34, 217, 197, 0.65);
+        outline-offset: 4px;
+    }
+
+    .submit_button img{
+        width: auto;
+        height: 48px;
+    }
+
+    @media screen and (max-width: 1024px){
+        .signup_wrap{
+            padding: 72px 38px 80px;
+        }
+
+        .signup_vertical{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 720px){
+        .signup_wrap{
+            padding: 54px 20px 64px;
+        }
+
+        .signup_wrap :deep(.title){
+            padding: 0 0.38em;
+            font-size: 34px;
+            letter-spacing: 3px;
+        }
+
+        .signUp_box{
+            margin-top: 24px;
+        }
+
+        .signup_form{
+            gap: 16px;
+            padding: 26px 20px 28px;
+        }
+
+        .form_row{
+            grid-template-columns: 1fr;
+            gap: 6px;
+        }
+
+        .form_label{
+            padding-top: 0;
+            font-size: 15px;
+        }
+
+        .option_list{
+            gap: 9px 14px;
+        }
+
+        .option_item{
+            font-size: 14px;
+        }
+
+        .privacy_box{
+            padding: 17px 16px;
+        }
+
+        .privacy_detail{
+            font-size: 12px;
+        }
+
+        .agree_box{
+            font-size: 14px;
+        }
     }
 </style>
