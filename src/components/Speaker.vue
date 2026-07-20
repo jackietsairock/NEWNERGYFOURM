@@ -1,6 +1,13 @@
 <script setup>
   import { ref, onMounted, onBeforeUnmount, watch, computed } from 'vue'
   import Title from './Title.vue'
+  import { Swiper, SwiperSlide } from 'swiper/vue'
+  import { A11y, Navigation, Pagination } from 'swiper/modules'
+  import 'swiper/css'
+  import 'swiper/css/navigation'
+  import 'swiper/css/pagination'
+
+  const swiperModules = [A11y, Navigation, Pagination]
 
   const props = defineProps({
     speakers: {
@@ -173,34 +180,71 @@
 </script>
 
 <template>
-  <div class="content_wrap">
+  <div class="content_wrap speaker_wrap">
     <Title :infoData="infoData" />
-    <!--<p class="text-black text-base text-center mb-6">*順序依議程表排列</p>-->
-    <div v-for="(group, idx)  in speakerGroups" :key="group.type" :class="['speaker_group',{'mb-15': idx === 0}]">
-      <!--<p class="text-4xl text-center ms:text-6xl" :style="['font-weight: 500;',{color: idx === 0 ? 'rgb(93, 246, 254)' : 'rgb(63, 154, 209)'}]">- {{ group.type }} -</p>-->
-      <div class="speaker_box max-w-[1366px] p-0 mx-auto flex flex-row flex-wrap items-start justify-center gap-[25px] sm:p-10 sm:gap-[35px] sm:flex-row sm:items-start">
-        <div v-for="(item, idx) in group.items" :key="`${group.type}-${idx}`" class="speaker_item text-left flex flex-col items-center py-5 px-1 w-[33%] sm:px-5 lg:w-[18%]"
-          role="button"
-          tabindex="0"
-          @click="openModal(item)"
-          @keyup.enter="openModal(item)"
-        >
-          <div class="speaker_img relative mb-3 overflow-hidden">
-            <img :src="getImgUrl(item.img)" :alt="item.name" />
-            <div class="absolute z-10 bottom-2 left-2 right-0 bg-white w-fit px-4 py-2">
-              <h3 class="speaker_name text-xl font-bold mb-1 sm:text-2xl tracking-[0.2em]" :style="{ color: item.color }">{{ item.name }}</h3>
-              <h3 class="speaker_name_en text-xs font-bold sm:text-sm" :style="{ color: item.color }">{{ item.name_en }}</h3>
-            </div>
-          </div>
-          <div class="speaker_text w-full">
-            <p class="text-xs sm:text-sm md:text-base lg:text-lg " v-html="item.title"></p>
-          </div>
-          <div
-            class="speaker_button w-full text-left mt-4 hover:cursor-pointer hover:opacity-90"
+    <img
+      class="speaker_vertical"
+      :src="getImgUrl('T-2.png')"
+      alt=""
+      aria-hidden="true"
+    />
+
+    <div v-for="(group, groupIdx) in speakerGroups" :key="group.type" class="speaker_group">
+      <Swiper
+        class="speaker_swiper"
+        :modules="swiperModules"
+        :slides-per-view="1.12"
+        :space-between="14"
+        :watch-overflow="true"
+        :navigation="{
+          prevEl: `.speaker-prev-${groupIdx}`,
+          nextEl: `.speaker-next-${groupIdx}`
+        }"
+        :pagination="{
+          el: `.speaker-pagination-${groupIdx}`,
+          clickable: true
+        }"
+        :breakpoints="{
+          560: { slidesPerView: 2, spaceBetween: 18 },
+          900: { slidesPerView: 3, spaceBetween: 20 },
+          1180: { slidesPerView: 4, spaceBetween: 16 }
+        }"
+        :aria-label="`${group.type}輪播`"
+      >
+        <SwiperSlide v-for="(item, itemIdx) in group.items" :key="`${group.type}-${itemIdx}`">
+          <article
+            class="speaker_card"
+            role="button"
+            tabindex="0"
+            :aria-label="`查看 ${item.name} 的個人簡介`"
+            @click="openModal(item)"
+            @keyup.enter="openModal(item)"
+            @keyup.space.prevent="openModal(item)"
           >
-            <p class="text-xs blcok bg-black text-white w-fit px-1 py-1 rounded-sm sm:text-sm sm:px-5">個人簡介</p>
-          </div>
-        </div>
+            <div class="speaker_img">
+              <img :src="getImgUrl(item.img)" :alt="item.name" />
+            </div>
+            <div class="speaker_card_body">
+              <h3 class="speaker_name">{{ item.name }}</h3>
+              <p v-if="item.name_en" class="speaker_name_en">{{ item.name_en }}</p>
+              <div class="speaker_text" v-html="item.title"></div>
+              <span class="speaker_detail">
+                詳細介紹
+                <span class="detail_icon" aria-hidden="true">→</span>
+              </span>
+            </div>
+          </article>
+        </SwiperSlide>
+      </Swiper>
+
+      <div class="speaker_controls" aria-label="輪播控制">
+        <button :class="['speaker_arrow', `speaker-prev-${groupIdx}`]" type="button" aria-label="上一組講者">
+          <span aria-hidden="true">←</span>
+        </button>
+        <div :class="['speaker_pagination', `speaker-pagination-${groupIdx}`]"></div>
+        <button :class="['speaker_arrow', `speaker-next-${groupIdx}`]" type="button" aria-label="下一組講者">
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
     </div>
   </div>
@@ -250,18 +294,192 @@
 </template>
 
 <style scoped lang="scss">
-    .speaker_item:hover{
-      transform: translateY(-4px);
-      transition: transform 0.3s ease;
+    .speaker_wrap{
+      max-width: 1420px;
+      padding: 82px 54px 76px 180px;
+      overflow: hidden;
+    }
+
+    .speaker_vertical{
+      position: absolute;
+      left: 66px;
+      top: 238px;
+      width: 104px;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .speaker_group{
+      margin-top: 32px;
+    }
+
+    .speaker_swiper{
+      overflow: visible;
+      padding: 4px 4px 22px;
+    }
+
+    .speaker_swiper :deep(.swiper-slide){
+      height: auto;
+    }
+
+    .speaker_card{
+      display: flex;
+      height: 100%;
+      min-height: 565px;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 22px rgba(26, 57, 77, 0.14);
       cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .speaker_text h3{
-      color: #484848;
+    .speaker_card:hover,
+    .speaker_card:focus-visible{
+      transform: translateY(-5px);
+      box-shadow: 0 18px 30px rgba(26, 57, 77, 0.2);
+      outline: none;
     }
 
-    .speaker_text p{
-      color: #000;
+    .speaker_card:focus-visible{
+      box-shadow: 0 0 0 3px #2d69a8, 0 18px 30px rgba(26, 57, 77, 0.2);
+    }
+
+    .speaker_img{
+      display: flex;
+      height: 345px;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(230, 239, 241, 0.92) 0%, #fff 82%);
+    }
+
+    .speaker_img img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      transition: transform 0.35s ease;
+    }
+
+    .speaker_card:hover .speaker_img img{
+      transform: scale(1.025);
+    }
+
+    .speaker_card_body{
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 14px 14px 16px;
+      color: #113f78;
+    }
+
+    .speaker_name{
+      margin: 0;
+      color: #073f82;
+      font-size: clamp(26px, 2vw, 36px);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+    }
+
+    .speaker_name_en{
+      min-height: 22px;
+      margin: 3px 0 5px;
+      color: #56718d;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .speaker_text{
+      color: #555;
+      font-size: 17px;
+      letter-spacing: 0.05em;
+      line-height: 1.45;
+    }
+
+    .speaker_detail{
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: auto;
+      margin-left: auto;
+      padding-top: 16px;
+      color: #164f8f;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+    }
+
+    .detail_icon{
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .speaker_controls{
+      display: flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .speaker_arrow{
+      display: inline-flex;
+      width: 52px;
+      height: 52px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #2b619a;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      color: #174d88;
+      font-size: 25px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .speaker_arrow:hover:not(.swiper-button-disabled){
+      background: #174d88;
+      color: #fff;
+    }
+
+    .speaker_arrow.swiper-button-disabled{
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .speaker_pagination{
+      display: flex;
+      width: auto !important;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .speaker_pagination :deep(.swiper-pagination-bullet){
+      width: 10px;
+      height: 10px;
+      margin: 0 !important;
+      background: transparent;
+      border: 1px solid #2b619a;
+      opacity: 1;
+    }
+
+    .speaker_pagination :deep(.swiper-pagination-bullet-active){
+      background: #104e91;
     }
 
     .modal_backdrop{
@@ -396,6 +614,22 @@
     }
 
     @media screen and (max-width: 1024px) {
+      .speaker_wrap{
+        padding: 72px 36px 68px;
+      }
+
+      .speaker_vertical{
+        display: none;
+      }
+
+      .speaker_card{
+        min-height: 545px;
+      }
+
+      .speaker_img{
+        height: 325px;
+      }
+
       .modal_panel{
         padding: 32px 24px;
       }
@@ -418,6 +652,47 @@
     }
 
     @media screen and (max-width: 640px) {
+      .speaker_wrap{
+        padding: 54px 20px 50px;
+      }
+
+      .speaker_wrap :deep(.title){
+        padding: 0 0.38em;
+        font-size: 34px;
+        letter-spacing: 3px;
+      }
+
+      .speaker_group{
+        margin-top: 24px;
+      }
+
+      .speaker_swiper{
+        padding-bottom: 16px;
+      }
+
+      .speaker_card{
+        min-height: 530px;
+      }
+
+      .speaker_img{
+        height: 320px;
+      }
+
+      .speaker_name{
+        font-size: 28px;
+      }
+
+      .speaker_controls{
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .speaker_arrow{
+        width: 46px;
+        height: 46px;
+        font-size: 22px;
+      }
+
       .modal_backdrop{
         align-items: flex-start;
         padding: 16px 12px;

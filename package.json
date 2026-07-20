@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
     "aos": "^2.3.4",
+    "swiper": "^14.0.5",
     "v-slick-carousel": "^0.7.1",
     "vue": "^3.5.13"
   },
