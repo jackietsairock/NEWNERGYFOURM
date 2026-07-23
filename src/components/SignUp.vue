@@ -133,9 +133,12 @@ function sign_up() {
     for (const key in form.value) {
         const value = form.value[key]
 
+        // 個資同意僅供前端必填驗證，不傳送至報名 API。
         if (key === agreeInputName.value) {
-            data.append(key, value ? '是' : '否')
-        } else if (Array.isArray(value)) {
+            continue
+        }
+
+        if (Array.isArray(value)) {
             const normalized = value
                 .map((item) => (item === OTHER_SENTINEL ? getOtherValue(key) : item))
                 .filter((item) => item)
