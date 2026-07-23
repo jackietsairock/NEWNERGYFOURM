@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://events.businesstoday.com.tw/2026/NEWNERGYFOURM/sitemap.xml
