@@ -156,7 +156,7 @@ function sign_up() {
     })
         .then((res) => res.json())
         .then((response) => {
-            if (response.bIsSignUpSuccess === '0') {
+            if (response.bIsSignUpSuccess === 0) {
                 alert(response.sError)
             } else {
                 alert('感謝您的支持，我們已收到您的報名資訊。本活動採審核制，我們將於活動前一周以簡訊發送【報名結果通知】，活動當日憑簡訊【報到序號】入場，敬請留意手機簡訊。')
