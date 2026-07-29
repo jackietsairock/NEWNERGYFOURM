@@ -59,8 +59,8 @@ const eventSliderSettings = {
 </script>
 
 <template>
-    <div class="content_wrap z-20">
-        <div class="logo_wrap flex flex-col gap-18 w-full mx-auto px-8 sm:gap-20 xl:px-0">
+    <div class="content_wrap logo_content_wrap z-20">
+        <div class="logo_wrap flex flex-col gap-18 w-full mx-auto px-8 sm:gap-20 sm:ml-0 xl:px-0">
             <div
                 v-for="(group, groupIndex) in brandGroups"
                 :key="`brand-group-${groupIndex}`"

@@ -51,6 +51,10 @@ body {
   padding: 85px 0;
 }
 
+.content_wrap.logo_content_wrap{
+  max-width: 100%;
+}
+
 /* .content_wrap.agenda1{
   padding-bottom: 0;
 }

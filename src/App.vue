@@ -58,9 +58,13 @@ const showTrafficSection = false;
       <SignUp :infoData="signUpInfo" />
 
     </section>
+
+    <!--
     <section id="industryNews" class="relative w-full z-20" aria-label="產業動態">
       <IndustryNews :infoData="industryNewsInfo" />
     </section>
+    -->
+
     <section v-if="showTrafficSection" id="traffic" class="relative w-full z-40 overflow-hidden" aria-label="交通資訊">
       <Traffic :infoData="trafficInfo" />
 
