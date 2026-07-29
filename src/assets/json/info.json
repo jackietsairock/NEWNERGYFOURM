@@ -60,25 +60,32 @@
       "event_info": [
         {
           "label": "時間",
-          "title": "2025年9月25日(四)",
-          "detail": "14:00 ~ 16:25 (13:30開放報到)"
+          "title": "2026年8月26日(三)",
+          "detail": "09:30 ~ 17:05 (09:00 開放報到)"
         },
         {
           "label": "地點",
-          "title": "長榮文苑酒店 1F苑廳",
-          "detail": "(嘉義縣太保市故宮大道777號)"
+          "title": "遠東香格里拉飯店 2樓宴會廳",
+          "detail": "(台北市敦化南路二段201號)"
         }
       ],
       "agendaInfo": [
         {
-          "time": "13:30-14:00",
+          "time": "09:00-09:30",
           "topic": "貴賓/來賓報到",
           "speaker": [
             {}
           ]
         },
         {
-          "time": "14:00-14:05",
+          "time": "09:30-09:32",
+          "topic": "主持人開場",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "09:32-09:40",
           "topic": "主辦單位致詞",
           "speaker": [
             {
@@ -88,33 +95,48 @@
           ]
         },
         {
-          "time": "19:08-19:16",
-          "topic": "貴賓致詞",
+          "time": "09:40-09:50",
+          "topic": "來賓致詞",
           "speaker": [
             {
-              "speakerTitle": "摩根資產管理代表"
+              "speakerTitle": "美國在台協會處長",
+              "speakerName": "谷立言"
             }
           ]
         },
         {
-          "time": "19:16-19:20",
-          "topic": "貴賓合影",
+          "time": "09:50-10:05",
+          "topic": "「台灣能源認知大調查(用電)」",
           "speaker": [
             {
-              "speakerTitle": "臺灣證券交易所董事長",
-              "speakerName": "林修銘"
+              "speakerTitle": "今周刊發布"
             }
           ]
         },
         {
-          "time": "19:20-19:40",
-          "section": "專題演講",
-          "topic": "【專題演講一】<br>川普經濟新局與2026總體趨勢",
+          "time": "10:05-10:35",
+          "section": "國際趨勢",
+          "topic": "迎戰能源轉型與低碳經濟<br>— 生質能源的戰略角色",
           "speaker": [
             {
-              "speakerTitle": "摩根資產管理亞太區首席市場策略師",
-              "speakerName": "許長泰"
+              "speakerTitle": "美國生物經濟(Bioeconomy)與永續燃料政策專家、Molecule Group 副總裁",
+              "speakerName": "Tristan Brown"
             }
+          ]
+        },
+        {
+          "time": "10:35-10:50",
+          "section": "產業趨勢",
+          "topic": "講者將於近期公布",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "10:50-11:00",
+          "topic": "中場休息",
+          "speaker": [
+            {}
           ]
         },
         {
