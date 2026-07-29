@@ -24,7 +24,7 @@ onUnmounted(() => {
   <button
     v-if="show"
     @click="goToTop"
-    class="fixed bottom-8 w-[65px] h-[65px] right-[4px] z-50 rounded-full text-xl font-bold transition sm:right-[16px] sm:w-[75px] sm:h-[75px]"
+    class="fixed bottom-8 w-[55px] h-[55px] right-[8px] z-50 rounded-full text-xl font-bold transition sm:right-[22px] sm:w-[65px] sm:h-[65px]"
     aria-label="回到頂部"
   >
     <img class="arrow_up" src="../assets/image/gototop_btn.png" alt="回到頂部">
