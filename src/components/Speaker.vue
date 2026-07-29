@@ -9,6 +9,9 @@
 
   const swiperModules = [A11y, Navigation, Pagination]
 
+  // 講者跳窗功能開關：需要重新啟用時改為 true。
+  const speakerModalEnabled = false
+
   const props = defineProps({
     speakers: {
       type: Array,
@@ -40,6 +43,10 @@
   }
 
   const openModal = (speaker) => {
+    if (!speakerModalEnabled) {
+      return
+    }
+
     activeSpeaker.value = speaker
     isModalOpen.value = true
   }
@@ -213,10 +220,10 @@
       >
         <SwiperSlide v-for="(item, itemIdx) in group.items" :key="`${group.type}-${itemIdx}`">
           <article
-            class="speaker_card"
-            role="button"
-            tabindex="0"
-            :aria-label="`查看 ${item.name} 的個人簡介`"
+            :class="['speaker_card', { speaker_card_clickable: speakerModalEnabled }]"
+            :role="speakerModalEnabled ? 'button' : undefined"
+            :tabindex="speakerModalEnabled ? 0 : undefined"
+            :aria-label="speakerModalEnabled ? `查看 ${item.name} 的個人簡介` : undefined"
             @click="openModal(item)"
             @keyup.enter="openModal(item)"
             @keyup.space.prevent="openModal(item)"
@@ -229,7 +236,7 @@
               <br>
               <p v-if="item.name_en" class="speaker_name_en">{{ item.name_en }}</p>
               <div class="speaker_text" v-html="item.title"></div>
-              <span class="speaker_detail">
+              <span v-if="speakerModalEnabled" class="speaker_detail">
                 詳細介紹
                 <span class="detail_icon" aria-hidden="true">→</span>
               </span>
@@ -253,7 +260,7 @@
   <teleport to="body">
     <transition name="fade">
       <div
-        v-if="isModalOpen && activeSpeaker"
+        v-if="speakerModalEnabled && isModalOpen && activeSpeaker"
         class="modal_backdrop"
         :style="{ backgroundColor: activeSpeaker.color ? `${activeSpeaker.color}50` : 'rgba(0, 0, 0, 0.2)' }"
         @click.self="closeModal"
@@ -334,18 +341,21 @@
       border-radius: 18px;
       background: #fff;
       box-shadow: 0 12px 22px rgba(26, 57, 77, 0.14);
-      cursor: pointer;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .speaker_card:hover,
-    .speaker_card:focus-visible{
+    .speaker_card_clickable{
+      cursor: pointer;
+    }
+
+    .speaker_card_clickable:hover,
+    .speaker_card_clickable:focus-visible{
       transform: translateY(-5px);
       box-shadow: 0 18px 30px rgba(26, 57, 77, 0.2);
       outline: none;
     }
 
-    .speaker_card:focus-visible{
+    .speaker_card_clickable:focus-visible{
       box-shadow: 0 0 0 3px #2d69a8, 0 18px 30px rgba(26, 57, 77, 0.2);
     }
 
@@ -366,7 +376,7 @@
       transition: transform 0.35s ease;
     }
 
-    .speaker_card:hover .speaker_img img{
+    .speaker_card_clickable:hover .speaker_img img{
       transform: scale(1.025);
     }
 
