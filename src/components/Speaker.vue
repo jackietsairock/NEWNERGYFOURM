@@ -226,6 +226,7 @@
             </div>
             <div class="speaker_card_body">
               <h3 class="speaker_name">{{ item.name }}</h3>
+              <br>
               <p v-if="item.name_en" class="speaker_name_en">{{ item.name_en }}</p>
               <div class="speaker_text" v-html="item.title"></div>
               <span class="speaker_detail">

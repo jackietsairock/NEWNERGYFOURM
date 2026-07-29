@@ -2,11 +2,11 @@
     "data":[
         {
             "type": "講師陣容",
-            "img": "speaker-1.png",
-            "name": "陳晉興",
-            "name_en": "Chen Jin-Hsing",
+            "img": "speaker1.png",
+            "name": "Tristan Brown",
+            "name_en": "",
             "color":"#4baafa",
-            "title": "臺大醫院外科部<br>主任暨特聘教授",
+            "title": "美國生物經濟(Bioeconomy)<br>與永續燃料政策專家<br>Molecule Group 副總裁",
             "info": [
                 {
                     "title": "現職",
@@ -35,11 +35,11 @@
         },
         {
             "type": "講師陣容",
-            "img": "speaker-2.png",
-            "name": "王儷玲",
-            "name_en": "Wang Li-Ling",
+            "img": "speaker2.png",
+            "name": "盧智卿",
+            "name_en": "",
             "color": "#4baafa",
-            "title": "臺灣永續金融與<br>企業影響力協會<br>理事長",
+            "title": "美國穀物暨生質產品協會<br>駐台代表",
             "info": [
                 {
                     "title": "現職",
@@ -65,11 +65,11 @@
         },
         {
             "type": "講師陣容",
-            "img": "speaker-3.png",
-            "name": "李秉穎",
-            "name_en": "Li Bing-Ying",
+            "img": "speaker3.png",
+            "name": "莊博貴",
+            "name_en": "",
             "color":"#4baafa",
-            "title": "台灣疫苗推動協會<br>理事長",
+            "title": "大亞電線電纜電力通信事業群<br>總經理",
             "info": [
                 {
                     "title": "現職",
@@ -93,11 +93,11 @@
         },
         {
             "type": "講師陣容",
-            "img": "speaker-4.png",
-            "name": "劉邦亨",
-            "name_en": "Liu Bang-Heng",
+            "img": "speaker4.png",
+            "name": "關婷怡",
+            "name_en": "",
             "color": "#4baafa",
-            "title": "光寶科技<br>人資長",
+            "title": "星星電力<br>總經理",
             "info": [
                 {
                     "title": "現職",
