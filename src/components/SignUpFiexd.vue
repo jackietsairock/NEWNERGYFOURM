@@ -32,6 +32,14 @@ onUnmounted(() => {
   >
     <img class="w-[55px] sm:w-[70px]" src="../assets/image/signup.png" alt="sign_up_fiexd_btn">
   </button>
+  <!-- <a
+    v-if="show"
+    href="https://www.google.com"
+    class="fixed bottom-30 right-2 z-52 hover:opacity-80 sm:right-5"
+    aria-label="大會手冊"
+  >
+    <img class="w-[55px] sm:w-[70px]" src="../assets/image/button.png" alt="sign_up_fiexd_btn2">
+  </a> -->
 </template>
 
 <style scoped>
