@@ -16,7 +16,7 @@
         <div class="intro_box max-w-[1200px] z-20 mx-auto">
             <Title :infoData="infoData" />
             <div class="intro_text">
-                <p class="intro_text__body" v-html="infoData.text[1]"></p>
+                <p class="intro_text__body" v-html="infoData.text[0]"></p>
             </div>
         </div>
     </div>
