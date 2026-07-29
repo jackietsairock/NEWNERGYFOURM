@@ -67,3 +67,9 @@ body {
   font-weight: 700;
   letter-spacing: 5px;
 }
+
+@media screen  and (max-width: 1366px) {
+  .content_wrap.logo_content_wrap{
+    max-width: 980px;
+  }
+}
