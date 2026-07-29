@@ -35,4 +35,10 @@
         border-left-color: #ffffff;
         border-right-color: #ffffff;
     }
+
+    @media (max-width: 1024px) {
+        .title {
+            font-size: 36px;
+        }
+    }
 </style>

@@ -140,48 +140,134 @@
           ]
         },
         {
-          "time": "19:40-20:00",
-          "topic": "【專題演講二】<br>AI科技產業發展新契機",
+          "time": "11:00-11:20",
+          "section": "能源穩定戰",
+          "topic": "一滴酒精成就兩條減碳路徑：E10與SAF，打造台灣能源韌性新戰略",
           "speaker": [
             {
-              "speakerTitle": "今周刊顧問",
-              "speakerName": "林宏文"
+              "speakerTitle": "美國穀物暨生質產品協會駐台代表",
+              "speakerName": "盧智卿"
             }
           ]
         },
         {
-          "time": "20:00-20:40",
-          "section": "焦點對談",
-          "topic": "【富足今周起Live】<br>投資AI時代的全球關鍵布局",
+          "time": "11:20-11:40",
+          "topic": "講者將於近期公布",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "11:40-12:00",
+          "topic": "講者將於近期公布",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "12:00-13:00",
+          "topic": "中午休息",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "13:00-13:30",
+          "topic": "貴賓/來賓報到",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "13:30-13:50",
+          "section": "產業串聯",
+          "topic": "能源轉型最後一哩路：如何跨越綠能的社會接受度？",
           "speaker": [
             {
-              "speakerTitle": "主持人："
-            },
-            {
-              "speakerTitle": "富足今周起主持人",
-              "speakerName": "王志郁"
-            },
-            {},
-            {
-              "speakerTitle": "與談人："
-            },
-            {
-              "speakerTitle": "摩根資產管理產品策略部副總經理",
-              "speakerName": "薄琪琳"
-            },
-            {
-              "speakerTitle": "摩根資產管理投資管理事業部執行董事",
-              "speakerName": "葉鴻儒"
-            },
-            {
-              "speakerTitle": "今周刊顧問",
-              "speakerName": "林宏文"
+              "speakerTitle": "大亞電線電纜電力通信事業群群總經理",
+              "speakerName": "莊博貴"
             }
           ]
         },
         {
-          "time": "20:40",
-          "topic": "圓滿賦歸",
+          "time": "13:50-14:10",
+          "topic": "穩定供電需求下的下一步？",
+          "speaker": [
+            {
+              "speakerTitle": "寶晶能源董事長",
+              "speakerName": "蔡佳晉"
+            }
+          ]
+        },
+        {
+          "time": "14:10-14:30",
+          "topic": "高用電時代下的供電新思維",
+          "speaker": [
+            {
+              "speakerTitle": "聯合再生能源代表"
+            }
+          ]
+        },
+        {
+          "time": "14:30-14:50",
+          "topic": "當電力成為產業競爭條件",
+          "speaker": [
+            {
+              "speakerTitle": "泓荃科技執行長",
+              "speakerName": "李慧平"
+            }
+          ]
+        },
+        {
+          "time": "14:50-15:30",
+          "topic": "跨界對談",
+          "speaker": [
+            {
+              "speakerTitle": "主持人：今周刊研發長",
+              "speakerName": "王之杰"
+            },
+            {
+              "speakerTitle": "與談人：上述講者"
+            }
+          ]
+        },
+        {
+          "time": "15:30-15:45",
+          "topic": "中場休息",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "15:45-16:05",
+          "topic": "企業如何取得穩定電力（題目待定）",
+          "speaker": [
+            {
+              "speakerTitle": "安侯永續發展顧問公司董事兼執行副總",
+              "speakerName": "林泉興"
+            }
+          ]
+        },
+        {
+          "time": "16:05-16:25",
+          "topic": "算力世界，電力隨行：AI時代電力市場的變革與商機",
+          "speaker": [
+            {
+              "speakerTitle": "星星電力總經理",
+              "speakerName": "關婷怡"
+            }
+          ]
+        },
+        {
+          "time": "16:25-16:30",
+          "topic": "講者將於近期公布",
+          "speaker": [
+            {}
+          ]
+        },
+        {
+          "time": "16:30",
+          "topic": "圓滿結束",
           "speaker": [
             {}
           ]

@@ -90,9 +90,9 @@
     }
 
     @media screen and (max-width: 1200px) {
-        .intro_text__body :deep(br){
-            display: none;
-        }
+        // .intro_text__body :deep(br){
+        //     display: none;
+        // }
     }
 
     @media screen and (max-width: 768px) {
@@ -107,7 +107,7 @@
 
         .intro_text__body{
             font-size: 1rem;
-            text-align: left;
+            text-align: justify;
             line-height: 1.8;
             letter-spacing: 0.03em;
         }
