@@ -23,18 +23,6 @@
       "tagName": "論壇報名",
       "tagUrl": "#signUp",
       "tagClassName": "signUp"
-    },
-    {
-      "tag": false,
-      "tagName": "產業動態",
-      "tagUrl": "#industryNews",
-      "tagClassName": "industryNews"
-    },
-    {
-      "tag": false,
-      "tagName": "交通資訊",
-      "tagUrl": "#traffic",
-      "tagClassName": "traffic"
     }
   ],
   "content": [
