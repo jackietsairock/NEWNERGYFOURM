@@ -392,7 +392,7 @@
     .speaker_name{
       margin: 0;
       color: #073f82;
-      font-size: clamp(26px, 2vw, 36px);
+      font-size: clamp(26px, 2vw, 30px);
       font-weight: 800;
       letter-spacing: 0.06em;
       line-height: 1.2;
