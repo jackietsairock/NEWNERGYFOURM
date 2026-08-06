@@ -80,8 +80,8 @@
           "topic": "來賓致詞",
           "speaker": [
             {
-              "speakerTitle": "行政院副院長",
-              "speakerName": "鄭麗君（邀請中）"
+              "speakerTitle": "副總統",
+              "speakerName": "蕭美琴（邀請中）"
             },
             {
               "speakerTitle": "經濟部主任秘書",
@@ -506,6 +506,13 @@
             {
               "href": "javascript:;",
               "target": "",
+              "img": "logo2-8.png",
+              "imgClass": "logo-size-4",
+              "alt": "太陽光電"
+            },
+            {
+              "href": "javascript:;",
+              "target": "",
               "img": "logo2-10.png",
               "imgClass": "logo-size-4-half",
               "alt": "CIP"
@@ -555,16 +562,16 @@
             {
               "href": "javascript:;",
               "target": "",
-              "img": "logo2-8.png",
-              "imgClass": "logo-size-4",
-              "alt": "太陽光電"
+              "img": "logo2-3.png",
+              "imgClass": "logo-size-3-half",
+              "alt": "風信能源"
             },
             {
               "href": "javascript:;",
               "target": "",
-              "img": "logo2-3.png",
-              "imgClass": "logo-size-3-half",
-              "alt": "風信能源"
+              "img": "logo2-11.png",
+              "imgClass": "logo-size-3",
+              "alt": "永豐餘"
             }
           ]
         }
