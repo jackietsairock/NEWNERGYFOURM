@@ -89,6 +89,10 @@
             {
               "speakerTitle": "美國在台協會處長",
               "speakerName": "谷立言"
+            },
+            {
+              "speakerTitle": "行政院副院長",
+              "speakerName": "鄭麗君 (邀請中)"
             }
           ]
         },
@@ -504,7 +508,7 @@
               "href": "javascript:;",
               "target": "",
               "img": "logo2-8.png",
-              "imgClass": "logo-size-3",
+              "imgClass": "logo-size-4",
               "alt": "太陽光電"
             },
             {
