@@ -49,7 +49,7 @@
         {
           "label": "時間",
           "title": "2026年8月26日(三)",
-          "detail": "09:30 ~ 17:05 (09:00 開放報到)"
+          "detail": "09:30 ~ 16:25 (09:00 開放報到)"
         },
         {
           "label": "地點",
@@ -66,14 +66,7 @@
           ]
         },
         {
-          "time": "09:30-09:32",
-          "topic": "主持人開場",
-          "speaker": [
-            {}
-          ]
-        },
-        {
-          "time": "09:32-09:40",
+          "time": "09:30-09:33",
           "topic": "主辦單位致詞",
           "speaker": [
             {
@@ -83,17 +76,27 @@
           ]
         },
         {
-          "time": "09:40-09:50",
+          "time": "09:33-09:48",
           "topic": "來賓致詞",
           "speaker": [
             {
-              "speakerTitle": "美國在台協會處長",
-              "speakerName": "谷立言"
+              "speakerTitle": "行政院副院長",
+              "speakerName": "鄭麗君（邀請中）"
             },
             {
-              "speakerTitle": "行政院副院長",
-              "speakerName": "鄭麗君 (邀請中)"
+              "speakerTitle": "經濟部主任秘書",
+              "speakerName": "莊銘池"
+            },
+            {
+              "speakerTitle": "貴賓致詞邀請中"
             }
+          ]
+        },
+        {
+          "time": "09:48-09:50",
+          "topic": "大合照",
+          "speaker": [
+            {}
           ]
         },
         {
@@ -111,30 +114,15 @@
           "topic": "迎戰能源轉型與低碳經濟<br>— 生質能源的戰略角色",
           "speaker": [
             {
-              "speakerTitle": "美國生物經濟(Bioeconomy)與永續燃料政策專家、Molecule Group 副總裁",
+              "speakerTitle": "紐約州立大學環境科學與林業學院(SUNY-ESF)能源資源經濟學教授、生物經濟發展研究所(BDI)主任",
               "speakerName": "Tristan Brown"
             }
           ]
         },
         {
-          "time": "10:35-10:50",
+          "time": "10:35-10:55",
           "section": "產業趨勢",
-          "topic": "講者將於近期公布",
-          "speaker": [
-            {}
-          ]
-        },
-        {
-          "time": "10:50-11:00",
-          "topic": "中場休息",
-          "speaker": [
-            {}
-          ]
-        },
-        {
-          "time": "11:00-11:20",
-          "section": "能源穩定戰",
-          "topic": "一滴酒精成就兩條減碳路徑：E10與SAF，打造台灣能源韌性新戰略",
+          "topic": "一滴酒精成就兩條減碳路徑：E10 與 SAF，打造台灣能源韌性新戰",
           "speaker": [
             {
               "speakerTitle": "美國穀物暨生質產品協會駐台代表",
@@ -143,17 +131,41 @@
           ]
         },
         {
-          "time": "11:20-11:40",
-          "topic": "講者將於近期公布",
+          "time": "10:55-11:00",
+          "topic": "中場休息",
           "speaker": [
             {}
           ]
         },
         {
-          "time": "11:40-12:00",
-          "topic": "講者將於近期公布",
+          "time": "11:00-11:20",
+          "section": "能源穩定戰",
+          "topic": "善用金融創工具，驅動離岸風電永續發展",
           "speaker": [
-            {}
+            {
+              "speakerTitle": "哥本哈根風能開發區域總裁與台灣區董事總經理",
+              "speakerName": "許乃文"
+            }
+          ]
+        },
+        {
+          "time": "11:20-11:40",
+          "topic": "推進地熱 下一波永續新動能",
+          "speaker": [
+            {
+              "speakerTitle": "結元能源開發股份有限公司總經理",
+              "speakerName": "洪向民（邀約中）"
+            }
+          ]
+        },
+        {
+          "time": "11:40-12:00",
+          "topic": "落實能源韌性 迎戰變局的五大作為",
+          "speaker": [
+            {
+              "speakerTitle": "台灣電力與能源工程協會理事長",
+              "speakerName": "劉文雄（邀約中）"
+            }
           ]
         },
         {
@@ -196,7 +208,8 @@
           "topic": "高用電時代下的供電新思維",
           "speaker": [
             {
-              "speakerTitle": "聯合再生能源代表"
+              "speakerTitle": "聯合再生能源",
+              "speakerName": "代表"
             }
           ]
         },
@@ -205,7 +218,7 @@
           "topic": "當電力成為產業競爭條件",
           "speaker": [
             {
-              "speakerTitle": "泓荃科技執行長",
+              "speakerTitle": "海利普電子執行長",
               "speakerName": "李慧平"
             }
           ]
@@ -232,7 +245,7 @@
         },
         {
           "time": "15:45-16:05",
-          "topic": "企業如何取得穩定電力（題目待定）",
+          "topic": "能源轉型下的企業淨零佈局",
           "speaker": [
             {
               "speakerTitle": "安侯永續發展顧問公司董事兼執行副總",
@@ -248,20 +261,6 @@
               "speakerTitle": "星星電力總經理",
               "speakerName": "關婷怡"
             }
-          ]
-        },
-        {
-          "time": "16:25-16:30",
-          "topic": "講者將於近期公布",
-          "speaker": [
-            {}
-          ]
-        },
-        {
-          "time": "16:30",
-          "topic": "圓滿結束",
-          "speaker": [
-            {}
           ]
         }
       ]
@@ -507,23 +506,9 @@
             {
               "href": "javascript:;",
               "target": "",
-              "img": "logo2-8.png",
-              "imgClass": "logo-size-4",
-              "alt": "太陽光電"
-            },
-            {
-              "href": "javascript:;",
-              "target": "",
-              "img": "logo2-3.png",
-              "imgClass": "logo-size-3-half",
-              "alt": "風信能源"
-            },
-            {
-              "href": "javascript:;",
-              "target": "",
-              "img": "logo2-4.png",
-              "imgClass": "logo-size-3-half",
-              "alt": "海利普"
+              "img": "logo2-10.png",
+              "imgClass": "logo-size-4-half",
+              "alt": "CIP"
             },
             {
               "href": "javascript:;",
@@ -539,12 +524,19 @@
               "imgClass": "logo-size-4",
               "alt": "寶晶"
             },
-            {
+             {
               "href": "javascript:;",
               "target": "",
               "img": "logo2-5.png",
               "imgClass": "logo-size-3",
               "alt": "聯合再生"
+            },
+            {
+              "href": "javascript:;",
+              "target": "",
+              "img": "logo2-4.png",
+              "imgClass": "logo-size-3-half",
+              "alt": "海利普"
             },
             {
               "href": "javascript:;",
@@ -563,9 +555,16 @@
             {
               "href": "javascript:;",
               "target": "",
-              "img": "logo2-10.png",
-              "imgClass": "logo-size-4-half",
-              "alt": "CIP"
+              "img": "logo2-8.png",
+              "imgClass": "logo-size-4",
+              "alt": "太陽光電"
+            },
+            {
+              "href": "javascript:;",
+              "target": "",
+              "img": "logo2-3.png",
+              "imgClass": "logo-size-3-half",
+              "alt": "風信能源"
             }
           ]
         }
