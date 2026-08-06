@@ -102,7 +102,7 @@ const showTrafficSection = false;
 
 
 #intro{
-  padding: 90px 55px;
+  padding: 0px 55px;
   background: url('./assets/image/bg3.jpg') center center no-repeat;
   background-size: cover;
   box-shadow: 0 24px 80px rgba(8, 35, 75, 0.08);

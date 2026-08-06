@@ -495,45 +495,73 @@
           "items": [
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
               "img": "logo2-2.png",
               "imgClass": "logo-size-3",
               "alt": "美國穀物"
             },
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
+              "img": "logo2-8.png",
+              "imgClass": "logo-size-3",
+              "alt": "太陽光電"
+            },
+            {
+              "href": "javascript:;",
+              "target": "",
               "img": "logo2-3.png",
               "imgClass": "logo-size-3-half",
               "alt": "風信能源"
             },
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
               "img": "logo2-4.png",
               "imgClass": "logo-size-3-half",
               "alt": "海利普"
             },
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
+              "img": "logo2-7.png",
+              "imgClass": "logo-size-4",
+              "alt": "大亞"
+            },
+            {
+              "href": "javascript:;",
+              "target": "",
+              "img": "logo2-9.png",
+              "imgClass": "logo-size-4",
+              "alt": "寶晶"
+            },
+            {
+              "href": "javascript:;",
+              "target": "",
               "img": "logo2-5.png",
               "imgClass": "logo-size-3",
               "alt": "聯合再生"
             },
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
               "img": "logo2-6.png",
               "imgClass": "logo-size-3",
               "alt": "安侯"
             },
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
               "img": "logo2-1.png",
               "imgClass": "logo-size-3-half",
               "alt": "星星電力"
+            },
+            {
+              "href": "javascript:;",
+              "target": "",
+              "img": "logo2-10.png",
+              "imgClass": "logo-size-4-half",
+              "alt": "CIP"
             }
           ]
         }

@@ -34,10 +34,12 @@
             2026今周刊第十屆新能源國際論壇，以算力爆發大挑戰、台灣能源轉型新思維為主題。
         </p>
         <div class="kv_box" :style="{ width: setDivResize.width + 'px', height: setDivResize.height + 'px' }" data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">
-            <img class="bigtext" :style="{ display: windowWidth >= 1024 ? 'block' : 'none'}" src="../assets/image/big-text.png" alt="2026今周刊第十屆新能源國際論壇主視覺標題">
-            <img class="phonetext" :style="{ display: windowWidth < 1024 ? 'block' : 'none'}" src="../assets/image/phon-text.png" alt="2026今周刊第十屆新能源國際論壇主視覺標題">
+            <img class="ai_kv_icon" :style="{ display: windowWidth >= 1024 ? 'block' : 'none'}" src="../assets/image/AI-kv.png" alt="AI-kv">
+            <img class="bigtext" :style="{ display: windowWidth >= 1024 ? 'block' : 'none'}" src="../assets/image/phon-text.png" alt="2026今周刊第十屆新能源國際論壇主視覺標題">
+            <img class="phonetext" :style="{ display: windowWidth < 1024 ? 'none' : 'none'}" src="../assets/image/phon-text.png" alt="2026今周刊第十屆新能源國際論壇主視覺標題">
         </div>
          <img src="../assets/image/scroll.png" alt="scroll_down" class="scroll_down"> 
+        <img class="bg1-phone" :style="{ display: windowWidth < 1024 ? 'block' : 'none'}" src="../assets/image/bg1-phone.jpg" alt="bg1-phone">
     </div>
 </template>
 
@@ -62,7 +64,7 @@
         pointer-events: none;
         width: 100%;
         height: 35%;
-        background: linear-gradient(to top, rgba(1, 48, 127, 0) 0%, rgb(1, 47, 127) 98%);
+        background: linear-gradient(to top, rgba(23, 79, 50, 0) 0%, rgb(23, 79, 50) 98%);
     }
 
     .kv_area::after{
@@ -74,9 +76,9 @@
         height: 16em;
         z-index: 1;
         pointer-events: none;
-        background: linear-gradient(to bottom, rgba(1, 48, 127, 0) 0%, rgb(1, 47, 127) 98%);
-        mask-image: linear-gradient(to bottom, rgba(1, 48, 127, 0) 0%, rgb(1, 47, 127) 98%);
-        -webkit-mask-image: linear-gradient(to bottom, rgba(1, 48, 127, 0) 0%, rgb(1, 47, 127) 98%);
+        background: linear-gradient(to bottom, rgba(88, 111, 29, 0) 0%, rgb(88, 111, 29) 98%);
+        mask-image: linear-gradient(to bottom, rgba(88, 111, 29, 0) 0%, rgb(88, 111, 29) 98%);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(88, 111, 29, 0) 0%, rgb(88, 111, 29) 98%);
 
 
     }
@@ -97,12 +99,21 @@
         z-index: 2;
     }
 
+    .ai_kv_icon{
+        position: absolute;
+        display: block;
+        z-index: 2;
+        width: 15%;
+        left: 20%;
+        top: 5%;
+    }
+
     .bigtext{
         position: absolute;
         display: block;
         z-index: 2;
-        width: 80%;
-        left: 10%;
+        width: 70%;
+        left: 35%;
         top:-5%;
     }
 
@@ -156,8 +167,9 @@
 
     @media screen and (max-width:1024px) {
         .kv_area{
-            background: url('../assets/image/bg1-phone.jpg') center center no-repeat;
+            background: none;
             background-size: cover;
+            height: auto;
         }
 
         .kv_area::before{
