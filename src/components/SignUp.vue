@@ -9,6 +9,12 @@ const props = defineProps({
 })
 
 const OTHER_SENTINEL = '__OTHER__'
+const DEFAULT_RADIO_OPTIONS = {
+    Gender: [
+        { labelName: '男', value: '男' },
+        { labelName: '女', value: '女' }
+    ]
+}
 
 const form = ref({})
 const otherInputs = ref({})
@@ -37,6 +43,12 @@ function createInitialFormState(infoData) {
             nextForm[field.inputName] = (field.label ?? [])
                 .filter((option) => option.checked)
                 .map((option) => (option.labelName === '其他' ? OTHER_SENTINEL : option.value))
+            continue
+        }
+
+        if (field.type === 'radio') {
+            const defaultOption = getRadioOptions(field).find((option) => option.checked)
+            nextForm[field.inputName] = field.value ?? defaultOption?.value ?? ''
             continue
         }
 
@@ -186,8 +198,17 @@ function isRequiredField(field) {
 
 function getRequiredMessage(field) {
     // 依欄位類型產生必填未填時的提示文字。
-    const action = field.type === 'select' || field.type === 'checkbox' ? '選擇' : '輸入'
+    const action = ['select', 'checkbox', 'radio'].includes(field.type) ? '選擇' : '輸入'
     return `請${action}${field.tagName}`
+}
+
+function getRadioOptions(field) {
+    // radio 可使用 label 或 option 設定；Gender 未設定選項時預設為男、女。
+    return field.label ?? field.option ?? DEFAULT_RADIO_OPTIONS[field.inputName] ?? []
+}
+
+function getOptionLabel(option) {
+    return option.labelName ?? option.optionName ?? option.label ?? option.value
 }
 
 function getFormatMessage(field, value) {
@@ -255,7 +276,7 @@ function isOtherSelected(key) {
                     <label class="form_label"><span v-if="isRequiredField(item)" class="required_mark">*</span>{{ item.tagName }}</label>
 
                     <input
-                        v-if="item.type !== 'select' && item.type !== 'checkbox'"
+                        v-if="!['select', 'checkbox', 'radio'].includes(item.type)"
                         v-model="form[item.inputName]"
                         :name="item.inputName"
                         :type="getInputType(item)"
@@ -263,6 +284,27 @@ function isOtherSelected(key) {
                         :maxlength="getMaxLength(item)"
                         class="form_control"
                     />
+                    <div
+                        v-else-if="item.type === 'radio'"
+                        class="option_list"
+                        role="radiogroup"
+                        :aria-label="item.tagName"
+                    >
+                        <label
+                            v-for="(opt, oidx) in getRadioOptions(item)"
+                            :key="`${item.inputName}-${opt.value}-${oidx}`"
+                            class="option_item"
+                        >
+                            <input
+                                v-model="form[item.inputName]"
+                                type="radio"
+                                :name="item.inputName"
+                                :value="opt.value"
+                                class="option_radio"
+                            />
+                            <span>{{ getOptionLabel(opt) }}</span>
+                        </label>
+                    </div>
                     <div v-else-if="item.type === 'checkbox'" class="option_list">
                         <label v-for="(opt, oidx) in item.label" :key="oidx" class="option_item">
                             <input
@@ -420,6 +462,7 @@ function isOtherSelected(key) {
     }
 
     .option_checkbox,
+    .option_radio,
     .agree_box input{
         width: 17px;
         height: 17px;

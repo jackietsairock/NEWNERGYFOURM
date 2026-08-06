@@ -298,6 +298,13 @@
           "required": true
         },
         {
+          "tagName": "姓別",
+          "inputName": "Gender",
+          "type": "radio",
+          "show": true,
+          "required": true
+        },
+        {
           "tagName": "手機",
           "inputName": "Mobile",
           "type": "input",
