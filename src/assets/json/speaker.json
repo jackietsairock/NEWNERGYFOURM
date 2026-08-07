@@ -2,6 +2,7 @@
     "data":[
         {
             "type": "講師陣容",
+            "modalEnabled": true,
             "img": "speaker1.png",
             "name": "Tristan Brown",
             "name_en": "",
@@ -36,6 +37,7 @@
         },
         {
             "type": "講師陣容",
+            "modalEnabled": true,
             "img": "speaker2.png",
             "name": "盧智卿",
             "name_en": "",
@@ -56,6 +58,7 @@
         },
         {
             "type": "講師陣容",
+            "modalEnabled": true,
             "img": "speaker3.png",
             "name": "莊博貴",
             "name_en": "",
@@ -73,6 +76,7 @@
         },
         {
             "type": "講師陣容",
+            "modalEnabled": false,
             "img": "speaker8.png",
             "name": "蔡佳晉",
             "name_en": "",
@@ -82,6 +86,7 @@
         },
         {
             "type": "講師陣容",
+            "modalEnabled": true,
             "img": "speaker6.png",
             "name": "李慧平",
             "name_en": "",
@@ -98,6 +103,7 @@
         },
         {
             "type": "講師陣容",
+            "modalEnabled": true,
             "img": "speaker4.png",
             "name": "關婷怡",
             "name_en": "",
@@ -114,6 +120,7 @@
         },
         {
             "type": "講師陣容",
+            "modalEnabled": true,
             "img": "speaker7.png",
             "name": "許乃文",
             "name_en": "",

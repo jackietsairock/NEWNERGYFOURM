@@ -9,9 +9,6 @@
 
   const swiperModules = [A11y, Navigation, Pagination]
 
-  // 講者跳窗功能開關。
-  const speakerModalEnabled = true
-
   const props = defineProps({
     speakers: {
       type: Array,
@@ -24,6 +21,7 @@
   const activeSpeaker = ref(null)
 
   const isExternalUrl = (url = '') => /^(https?:)?\/\//.test(url) || url.startsWith('data:')
+  const isSpeakerModalEnabled = (speaker) => speaker?.modalEnabled === true
 
   function getImgUrl(img = '') {
     if (!img) {
@@ -43,7 +41,7 @@
   }
 
   const openModal = (speaker) => {
-    if (!speakerModalEnabled) {
+    if (!isSpeakerModalEnabled(speaker)) {
       return
     }
 
@@ -220,10 +218,10 @@
       >
         <SwiperSlide v-for="(item, itemIdx) in group.items" :key="`${group.type}-${itemIdx}`">
           <article
-            :class="['speaker_card', { speaker_card_clickable: speakerModalEnabled }]"
-            :role="speakerModalEnabled ? 'button' : undefined"
-            :tabindex="speakerModalEnabled ? 0 : undefined"
-            :aria-label="speakerModalEnabled ? `查看 ${item.name} 的個人簡介` : undefined"
+            :class="['speaker_card', { speaker_card_clickable: isSpeakerModalEnabled(item) }]"
+            :role="isSpeakerModalEnabled(item) ? 'button' : undefined"
+            :tabindex="isSpeakerModalEnabled(item) ? 0 : undefined"
+            :aria-label="isSpeakerModalEnabled(item) ? `查看 ${item.name} 的個人簡介` : undefined"
             @click="openModal(item)"
             @keyup.enter="openModal(item)"
             @keyup.space.prevent="openModal(item)"
@@ -236,7 +234,7 @@
               <br>
               <p v-if="item.name_en" class="speaker_name_en">{{ item.name_en }}</p>
               <div class="speaker_text" v-html="item.title"></div>
-              <span v-if="speakerModalEnabled" class="speaker_detail">
+              <span v-if="isSpeakerModalEnabled(item)" class="speaker_detail">
                 詳細介紹
                 <span class="detail_icon" aria-hidden="true">→</span>
               </span>
@@ -260,7 +258,7 @@
   <teleport to="body">
     <transition name="fade">
       <div
-        v-if="speakerModalEnabled && isModalOpen && activeSpeaker"
+        v-if="isModalOpen && activeSpeaker"
         class="modal_backdrop"
         :style="{ backgroundColor: activeSpeaker.color ? `${activeSpeaker.color}50` : 'rgba(0, 0, 0, 0.2)' }"
         @click.self="closeModal"
