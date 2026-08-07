@@ -39,6 +39,7 @@ export const siteConfig = {
   organizationName: '今周刊 Business Today',
   organizationUrl: 'https://www.businesstoday.com.tw/',
   organizationLogo: 'https://events.businesstoday.com.tw/2026/NEWNERGYFOURM/favicon.png',
+  offerValidFrom: '2026-08-07T00:00:00+08:00',
   sameAs: [
     'https://www.businesstoday.com.tw/',
     'https://esg.businesstoday.com.tw/',
@@ -234,7 +235,8 @@ export function createSeoPayload({ infoData, speakers }) {
           url: `${siteConfig.canonicalUrl}#signUp`,
           price: '0',
           priceCurrency: 'TWD',
-          availability: 'https://schema.org/InStock'
+          availability: 'https://schema.org/InStock',
+          validFrom: siteConfig.offerValidFrom
         }
       },
       speakerEntities.length
