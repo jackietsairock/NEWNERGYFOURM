@@ -9,8 +9,8 @@
 
   const swiperModules = [A11y, Navigation, Pagination]
 
-  // 講者跳窗功能開關：需要重新啟用時改為 true。
-  const speakerModalEnabled = false
+  // 講者跳窗功能開關。
+  const speakerModalEnabled = true
 
   const props = defineProps({
     speakers: {
@@ -654,11 +654,6 @@
 
       .modal_info{
         width: 100%;
-      }
-
-      .modal_section ul{
-        padding-left: 0;
-        list-style: none;
       }
     }
 
