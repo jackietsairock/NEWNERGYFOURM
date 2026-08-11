@@ -77,18 +77,23 @@
         },
         {
           "time": "09:33-09:48",
-          "topic": "來賓致詞",
+          "topic": "貴賓致詞",
           "speaker": [
             {
               "speakerTitle": "副總統",
               "speakerName": "蕭美琴（邀請中）"
             },
             {
-              "speakerTitle": "經濟部主任秘書",
-              "speakerName": "莊銘池"
+              "speakerTitle": "環境部部長",
+              "speakerName": "彭啟明（邀約中）"
             },
             {
-              "speakerTitle": "貴賓致詞邀請中"
+              "speakerTitle": "經濟部常務次長",
+              "speakerName": "賴建信"
+            },
+            {
+              "speakerTitle": "經濟部常務次長",
+              "speakerName": "谷立言"
             }
           ]
         },
