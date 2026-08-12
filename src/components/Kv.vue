@@ -39,7 +39,7 @@
             <img class="phonetext" :style="{ display: windowWidth < 1024 ? 'none' : 'none'}" src="../assets/image/phon-text.png" alt="2026今周刊第十屆新能源國際論壇主視覺標題">
         </div>
          <img src="../assets/image/scroll.png" alt="scroll_down" class="scroll_down"> 
-        <img class="bg1-phone" :style="{ display: windowWidth < 1024 ? 'block' : 'none'}" src="../assets/image/bg1-phone.jpg" alt="bg1-phone">
+        <img class="bg1-phone" :style="{ display: windowWidth < 1024 ? 'block' : 'none'}" src="../assets/image/bg1-phone.png" alt="bg1-phone">
     </div>
 </template>
 
@@ -49,7 +49,7 @@
         display: block;
         width: 100%;
         height: 100vh;
-        background: url('../assets/image/kv.jpg') center center no-repeat;
+        background: url('../assets/image/kv.png') center center no-repeat;
         background-size: cover;
     }
 
