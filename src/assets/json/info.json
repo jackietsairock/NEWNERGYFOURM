@@ -520,7 +520,7 @@
           "items": [
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
               "img": "logo2-12.png",
               "imgClass": "logo-size-3",
               "alt": "經濟部"
@@ -532,14 +532,14 @@
           "items": [
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
               "img": "logo2-13.png",
               "imgClass": "logo-size-3-half",
               "alt": "經濟部能源署"
             },
             {
               "href": "javascript:;",
-              "target": "_blank",
+              "target": "",
               "img": "logo2-14.png",
               "imgClass": "logo-size-3",
               "alt": "綠能科技產業推動中心"
