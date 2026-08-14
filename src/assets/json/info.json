@@ -516,6 +516,37 @@
           ]
         },
         {
+          "title": "<spen class='pl-0 lg:pl-12'></spen>指導單位",
+          "items": [
+            {
+              "href": "javascript:;",
+              "target": "_blank",
+              "img": "logo2-12.png",
+              "imgClass": "logo-size-3",
+              "alt": "經濟部"
+            }
+          ]
+        },
+        {
+          "title": "<spen class='pl-0 lg:pl-12'></spen>協辦單位",
+          "items": [
+            {
+              "href": "javascript:;",
+              "target": "_blank",
+              "img": "logo2-13.png",
+              "imgClass": "logo-size-3-half",
+              "alt": "經濟部能源署"
+            },
+            {
+              "href": "javascript:;",
+              "target": "_blank",
+              "img": "logo2-14.png",
+              "imgClass": "logo-size-3",
+              "alt": "綠能科技產業推動中心"
+            }
+          ]
+        },
+        {
           "title": "<spen class='pl-0 lg:pl-12'></spen>合作夥伴",
           "items": [
             {
