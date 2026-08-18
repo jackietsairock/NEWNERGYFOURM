@@ -38,6 +38,19 @@
       ]
     },
     {
+      "cmsType": "video",
+      "title": "",
+      "titleColor": "#000",
+      "titleEn": "video",
+      "titleEnColor": "#20776e",
+      "videoInfo": [
+        {
+          "src": "https://www.youtube.com/embed/XXXXXXXXXXX",
+          "title": "2026第十屆新能源國際論壇影片"
+        }
+      ]
+    },
+    {
       "cmsType": "agenda",
       "id": 1,
       "title": "議程",

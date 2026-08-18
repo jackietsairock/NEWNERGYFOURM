@@ -2,6 +2,7 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Kv from './components/Kv.vue'
+import Video from './components/Video.vue'
 import Intro from './components/Intro.vue'
 import Speaker from './components/Speaker.vue'
 import Agenda from './components/Agenda.vue'
@@ -26,6 +27,7 @@ const getContentByType = (cmsType, fallbackIndex) => {
 }
 
 const introInfo = getContentByType('intro', 0);
+const videoInfo = getContentByType('video', 1);
 const agendaInfo = getContentByType('agenda', 1);
 const speakerInfo = getContentByType('speaker', 2);
 const signUpInfo = getContentByType('signUp', 3);
@@ -42,6 +44,9 @@ const showTrafficSection = false;
     <section id="kv" class="relative w-full z-20 overflow-hidden" aria-label="2026今周刊第十屆新能源國際論壇主視覺">
       <Kv />
     </section>
+    <!-- <section id="video" class="relative w-full z-10" aria-label="論壇影音">
+      <Video :infoData="videoInfo" />
+    </section> -->
     <section id="intro" class="relative w-full z-10" aria-label="活動前言">
       <Intro :infoData="introInfo" />
     </section>
@@ -142,6 +147,11 @@ const showTrafficSection = false;
 
 #event{
   background: url('./assets/image/bg3.jpg') fixed center center no-repeat;
+  background-size: cover;
+}
+
+#video{
+  background: url('./assets/image/bg4.jpg') fixed center center no-repeat;
   background-size: cover;
 }
 
